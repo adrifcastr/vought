@@ -39,7 +39,7 @@ export async function run(message, args) {
 
     catch (ex) {
         Util.log('Error occurred while fetching data from wiki: ' + ex.stack);
-        message.channel.send(Util.Embed().setTitle('Failed to fetch info from wiki!');
+        message.channel.send(Util.Embed().setTitle('Failed to fetch info from wiki!'));
     } 
 }
 
