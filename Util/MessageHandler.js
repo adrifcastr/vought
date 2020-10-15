@@ -21,6 +21,8 @@ class MsgHandler {
 
         const lowercaseContent = message.content.toLowerCase();
 
+        Util.Checks.CSD(message, Util); //eastereggs
+
         let usedPrefix = Util.config.prefixes.find(prefix => lowercaseContent.startsWith(prefix.toLowerCase()));
         if (!usedPrefix) return;
 

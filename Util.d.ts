@@ -12,6 +12,7 @@ export function normalize(num: number): string;
 export function getIdFromString(str: string): string;
 export function secondsToDifferenceString(seconds: number, settings: secondsToDifferenceSettings): string;
 export function parseSeriesEpisodeString(str: string): SeasonAndEpisodeInfo;
+export function IMG(image_id: string, message: Discord.Message): Promise<void>;
 
 declare module "discord.js" {
     interface Client {

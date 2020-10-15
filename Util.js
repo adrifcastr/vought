@@ -5,6 +5,7 @@ import MsgHandler from './Util/MessageHandler.js';
 import recursive from 'recursive-readdir';
 import path from 'path';
 import Checks from './Util/Checks.js';
+import Imgur from 'imgur-node';
 
 class Util {
     constructor() {
@@ -23,6 +24,33 @@ class Util {
         if (typeof inputDelay !== 'number') return Promise.resolve();
         // Otherwise, resolve after the number of milliseconds.
         return new Promise(resolve => setTimeout(resolve, inputDelay));
+    }
+
+    /**
+     * Get image from imgur album
+     * @param {string} imgid 
+     * @param {Discord.Message} message
+     * @param {boolean} nsfw
+     */
+    static async IMG(imgid, message) {
+        if (!message.guild) return;
+        if (!process.env.IMG_CL) return;
+
+        const imgclient = new Imgur.Client(process.env.IMG_CL);
+
+        imgclient.album.get(imgid, (err, res) => {
+            if (err) {
+                Util.log(err);
+                return message.channel.send(Util.Embed().setTitle('An error occurred, please try again later!'));
+            }
+    
+            let min = 0;
+            let max = res.images.length - 1;
+            let ranum = Math.floor(Math.random() * (max - min + 1)) + min;
+            let rimg = res.images[ranum].link;
+
+            message.channel.send(Util.Embed().setImage(rimg));
+        });
     }
 
     /**
