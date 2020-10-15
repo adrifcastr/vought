@@ -107,8 +107,8 @@ class Util {
 
     static Embed() {
         const embed = new Discord.MessageEmbed();
-        embed.setColor('#2791D3');
-        embed.setFooter(Util.config.footer);
+        embed.setColor('DARK_NAVY');
+        embed.setFooter(Util.config.footer, Util.config.avatar);
 
         return embed;
     }

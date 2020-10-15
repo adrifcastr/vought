@@ -12,8 +12,8 @@ export async function run(message, args) {
 
     if (!args[0]) {
         const help = Util.Embed()
-            .setTitle('__Use ,help <module> to get a list of commands__')
-            .setDescription('Use `,help syntax` for command syntax explanations\nMy prefixes are: ' + prefixes)
+            .setTitle('__Use .help <module> to get a list of commands__')
+            .setDescription('Use `.help syntax` for command syntax explanations\nMy prefixes are: ' + prefixes)
             .addField('main (`'+ cmdamount.filter(x => x.help.type === 'main').length + ' available`)', 'My main features')  
             .addField('owner (`'+ cmdamount.filter(x => x.help.type === 'owner').length + ' available`)', 'Application owner only commands')    
             .addField('misc (`'+ cmdamount.filter(x => x.help.type === 'misc').length + ' available`)', 'Miscellaneous commands')    
@@ -57,7 +57,7 @@ export async function run(message, args) {
         for (let i = 0; i < arrs.length; i++) {
             const embed = Util.Embed()
             .setTitle('__List of available "' + type + '" commands below:__')
-            .setDescription('Use `,help syntax` for command syntax explanations\nMy prefixes are: ' + prefixes)
+            .setDescription('Use `.help syntax` for command syntax explanations\nMy prefixes are: ' + prefixes)
 
             for (let item of arrs[i]) {
                 let mo = { emotes: [], roles: [] };
@@ -104,7 +104,7 @@ export async function run(message, args) {
     else {
         const embed = Util.Embed()
         .setTitle('__List of available "' + type + '" commands below:__')
-        .setDescription('Use `,help syntax` for command syntax explanations\nMy prefixes are: ' + prefixes)
+        .setDescription('Use `.help syntax` for command syntax explanations\nMy prefixes are: ' + prefixes)
         
         for (let item in commands) {
 

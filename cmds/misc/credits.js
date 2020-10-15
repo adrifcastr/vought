@@ -6,7 +6,7 @@ import Util from '../../Util.js';
 export async function run(message) {
     const embed = Util.Embed()
     .setTitle('Development Credits:')
-    .addField('adrifcastr', 'Development')
+    .addField('adrifcastr', 'Development & Hosting')
     .addField('Donate:', '[PayPal](https://paypal.me/adrifcastr)')
 
     message.channel.send(embed);
