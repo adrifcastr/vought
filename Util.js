@@ -114,6 +114,7 @@ class Util {
      */
     static parseSeriesEpisodeString(input) {
         if (!input) return null;
+        if (input.length < 3) return null;
 
         let str = input.toLowerCase();
         let seriesString = '';
