@@ -22,7 +22,7 @@ class Checks {
      * Rules check
      * @param {Discord.Message} message 
      */
-    static async RulesCheck(message, Util) {
+    static async RulesCheck(message) {
         let member = await process.vought.guilds.cache.get('604160368490577930').members.fetch(message.author.id);
 
         if (!member) return;
