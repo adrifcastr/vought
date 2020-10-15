@@ -4,6 +4,7 @@ import config from './data/config/config.js';
 import MsgHandler from './Util/MessageHandler.js';
 import recursive from 'recursive-readdir';
 import path from 'path';
+import Checks from './Util/Checks.js';
 
 class Util {
     constructor() {
@@ -12,6 +13,7 @@ class Util {
 
     static get config() { return config; }
     static get MsgHandler() { return MsgHandler; }
+    static get Checks() { return Checks; }
 
     /**
      * @param {number} inputDelay 

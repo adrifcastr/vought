@@ -6,7 +6,7 @@ import Util from './Util.js';
 
 const vought = new Discord.Client({
     ws: {
-        intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_MESSAGE_REACTIONS']
+        intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_MESSAGE_REACTIONS', 'DIRECT_MESSAGES']
     },
     allowedMentions: { parse: ['users', 'roles'] },
     restRequestTimeout: 25000
@@ -79,7 +79,8 @@ vought.on('guildUnavailable', guild => {
 });
 
 vought.on('guildMemberAdd', member => {
-
+    const channel = process.vought.guilds.cache.get('604160368490577930').channels.cache.get('766304333712457748');
+    channel.send(`${member} welcome and thank you for choosing Vaught International!\nTo gain full access to this guild, please carefully read through <#604451022907244574> and follow the given instructions!`);
 });
 
 vought.on('commandRefused', (message, reason) => {
