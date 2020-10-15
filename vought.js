@@ -81,3 +81,7 @@ vought.on('guildUnavailable', guild => {
 vought.on('guildMemberAdd', member => {
 
 });
+
+vought.on('commandRefused', (message, reason) => {
+    Util.log(`Command Refused:\n\n${message.author.tag} attempted to use \`${message.content}\`\nCommand failed due to: \`${reason}\`\nOrigin: \`#${message.channel.name}\` at \`${message.guild.name}\``);
+});

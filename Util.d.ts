@@ -11,6 +11,7 @@ export function Embed(): Discord.MessageEmbed;
 export function normalize(num: number): string;
 export function getIdFromString(str: string): string;
 export function secondsToDifferenceString(seconds: number, settings: secondsToDifferenceSettings): string;
+export function parseSeriesEpisodeString(str: string): SeasonAndEpisodeInfo;
 
 declare module "discord.js" {
     interface Client {
@@ -39,6 +40,11 @@ interface Config {
 
 interface secondsToDifferenceSettings {
     enableSeconds: boolean
+}
+
+interface SeasonAndEpisodeInfo {
+    season: number;
+    episode: number;
 }
 
 interface Command {

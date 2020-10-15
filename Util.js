@@ -105,6 +105,62 @@ class Util {
         
     }
 
+    /**
+     * @summary A low-level method for parsing episode stuff
+     * @param {string} input
+     * @returns {{season: number, episode: number}} The object containing the series and episode details
+     */
+    static parseSeriesEpisodeString(input) {
+        if (!input) return null;
+
+        let str = input.toLowerCase();
+        let seriesString = '';
+        let episodeString = '';
+        let hit_limiter = false;
+
+        //parse film industry standard episode definitions e.g. 205
+        if (str.length === 3) {
+            let s = str.slice(0, 1);
+            let e = str.slice(-2);
+
+            const season = Number(s);
+            const episode = Number(e);
+
+            if (isNaN(season) || isNaN(episode)) return null;
+            else return {
+                season: season,
+                episode: episode
+            };
+        }
+        //note: turns out passing any amount of numbers passes this method and sends an api request which returns 404, gotta think of some smart filter thingx
+        for (let letter of str) {
+            if (letter === 's') continue;
+
+            if (letter === 'e' || letter === 'x') {
+                hit_limiter = true;
+                continue;
+            }
+
+            if (!(/^\d+$/.test(letter))) continue;
+
+            if (!hit_limiter) {
+                seriesString += letter;
+            } else {
+                episodeString += letter;
+            }
+        }
+
+        const seriesNumber = Number(seriesString);
+        const episodeNumber = Number(episodeString);
+
+        if (isNaN(seriesNumber) || isNaN(episodeNumber)) return null;
+
+        return {
+            season: seriesNumber,
+            episode: episodeNumber
+        };
+    }
+
     static Embed() {
         const embed = new Discord.MessageEmbed();
         embed.setColor('DARK_NAVY');

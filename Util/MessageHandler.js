@@ -51,6 +51,13 @@ class MsgHandler {
                 }
             }   
 
+            if (command.help.nsfw) {
+                if (!message.channel.nsfw) {
+                    process.gideon.emit('commandRefused', message, 'NSFW_REQUIRED');
+                    return message.reply('This command requires a `NSFW` channel!');
+                }
+            }
+            
             if (command.help.roles && command.help.roles.length > 0) {
                 let missingroles = [];
                 let rolenames = [];
@@ -97,12 +104,17 @@ class MsgHandler {
         if (command.help.args.force) {
             const noinput = Util.Embed().setTitle('You must supply valid input!');
             const nomention = Util.Embed().setTitle('You must supply a valid mention!');
+            const noepisode = Util.Embed().setTitle('You must supply a valid episode and season!').setDescription('Acceptable formats: S00E00, 00x00 and 000');
             const nonum = Util.Embed().setTitle('You must supply a valid number!');
 
             if (!args.length) return message.channel.send(noinput);
 
             if (command.help.args.amount && command.help.args.amount > 0) {
                 if (args.length !== command.help.args.amount) return message.channel.send(noinput);
+            }
+
+            if (command.help.args.type && command.help.args.type === 'episode') {
+                if (!Util.parseSeriesEpisodeString(args[0])) return message.channel.send(noepisode);
             }
 
             if (command.help.args.type && command.help.args.type === 'mention') {

@@ -14,7 +14,7 @@ export async function run(message, args) {
         const help = Util.Embed()
             .setTitle('__Use .help <module> to get a list of commands__')
             .setDescription('Use `.help syntax` for command syntax explanations\nMy prefixes are: ' + prefixes)
-            .addField('main (`'+ cmdamount.filter(x => x.help.type === 'main').length + ' available`)', 'My main features')  
+            .addField('main (`'+ cmdamount.filter(x => x.help.type === 'main').length + ' available`)', 'Main features')  
             .addField('owner (`'+ cmdamount.filter(x => x.help.type === 'owner').length + ' available`)', 'Application owner only commands')    
             .addField('misc (`'+ cmdamount.filter(x => x.help.type === 'misc').length + ' available`)', 'Miscellaneous commands')    
             .addField('Total amount:', `\`${cmdamount.length}\` commands available`)   
@@ -87,7 +87,7 @@ export async function run(message, args) {
 
                 marks[item] = mo;
                 
-                embed.addField(',' + item + ` ${marks[item].emotes.join('')}${marks[item].roles.length > 0 ? '`' + marks[item].roles.join(' ') + '`' : ''}`, commands[item].help_desc);
+                embed.addField('.' + item + ` ${marks[item].emotes.join('')}${marks[item].roles.length > 0 ? '`' + marks[item].roles.join(' ') + '`' : ''}`, commands[item].help_desc);
             }
             pages.push(embed);
         }
@@ -135,7 +135,7 @@ export async function run(message, args) {
 
             marks[item] = mo;
 
-            embed.addField(',' + item + ` ${marks[item].emotes.join('')}${marks[item].roles.length > 0 ? '`' + marks[item].roles.join(' ') + '`' : ''}`, commands[item].help_desc);
+            embed.addField('.' + item + ` ${marks[item].emotes.join('')}${marks[item].roles.length > 0 ? '`' + marks[item].roles.join(' ') + '`' : ''}`, commands[item].help_desc);
         }
         message.channel.send(embed);
     }
