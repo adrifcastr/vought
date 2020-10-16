@@ -25,6 +25,7 @@ declare global {
     declare namespace NodeJS {
         export interface Process {
             client: Discord.Client;
+            logos: String;
         }
     }
 }

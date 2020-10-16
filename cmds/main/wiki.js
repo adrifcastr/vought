@@ -33,7 +33,7 @@ export async function run(message, args) {
         const url = article.url.replace(/\(/g, '%28').replace(/\)/g, '%29');
         
         message.channel.send(Util.Embed().setTitle(article.title)
-        .setDescription(`${article.abstract + '...'}\n\n**[Click here to read the full article](https://${wiki.url}${url} 'https://${wiki.url}${url}')**`)
+        .setDescription(`${article.abstract + '...'}\n\n**[Click here to read the full article](https://${wiki.url}${url} 'https://${wiki.url}${url}')**` + process.logos)
         .setThumbnail(article.thumbnail)); 
     }
 

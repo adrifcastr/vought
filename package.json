@@ -1,7 +1,7 @@
 {
   "name": "order",
   "version": "1.0.0",
-  "description": "Paid custom Discord Bot",
+  "description": "The Boys inspired Discord Bot",
   "main": "index.js",
   "type": "module",
   "scripts": {

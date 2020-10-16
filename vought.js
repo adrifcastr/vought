@@ -14,6 +14,8 @@ const vought = new Discord.Client({
 
 process.vought = vought;
 
+const logos = '\n<a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896>';
+process.logos = logos;
 vought.commands = new Discord.Collection();
 
 if (process.env.CLIENT_TOKEN) vought.login(process.env.CLIENT_TOKEN);
@@ -80,7 +82,7 @@ vought.on('guildUnavailable', guild => {
 
 vought.on('guildMemberAdd', member => {
     const channel = process.vought.guilds.cache.get('604160368490577930').channels.cache.get('766304333712457748');
-    channel.send(`${member} welcome and thank you for choosing Vought International<:vought:766413861816893440>!\nTo gain full access to this guild, please carefully read through <#604451022907244574> and follow the given instructions!`);
+    channel.send(`${member} welcome and thank you for choosing Vought International<:vought:766413861816893440>!\nTo gain full access to this guild, please carefully read through <#604451022907244574> and follow the given instructions!` + process.logos);
 });
 
 vought.on('commandRefused', (message, reason) => {

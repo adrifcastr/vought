@@ -18,7 +18,7 @@ export async function run(message) {
     };
 
     message.channel.send(Util.Embed()
-    .setDescription(`**${boom.emote}${auth} ${boom.text}${boom.emote}**\n\n${boom.desc}`)
+    .setDescription(`**${boom.emote}${auth} ${boom.text}${boom.emote}**\n\n${boom.desc}` + process.logos)
     .setImage(boom.gif));
 }
 

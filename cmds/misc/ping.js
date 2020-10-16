@@ -8,7 +8,7 @@ export async function run(message) {
 
     Util.fetchJSON('https://discord.com/api/v7/gateway').then(() => {
         let took = (process.hrtime.bigint() - start) / BigInt('1000000');
-        message.channel.send(Util.Embed().setTitle('Ping:').setDescription(`WebSocket ping: ${process.vought.ws.ping.toFixed(2)} ms\nREST ping: ${took} ms`));
+        message.channel.send(Util.Embed().setTitle('Ping:').setDescription(`WebSocket ping: ${process.vought.ws.ping.toFixed(2)} ms\nREST ping: ${took} ms` + process.logos));
     }, failed => {
         console.log(failed);
         message.channel.send('Failed to measure ping!');

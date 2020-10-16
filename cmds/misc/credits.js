@@ -7,6 +7,7 @@ export async function run(message) {
     const embed = Util.Embed()
     .setTitle('Development Credits:')
     .addField('adrifcastr', 'Development & Hosting')
+    .addField('TheBearOwner#2828', 'Vought Emote GIF')
     .addField('Donate:', '[PayPal](https://paypal.me/adrifcastr)')
 
     message.channel.send(embed);

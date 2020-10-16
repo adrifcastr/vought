@@ -19,13 +19,13 @@ export async function run(message, args) {
     });
 
     if (!args[0]) return message.channel.send(Util.Embed().setTitle('You must supply a lang code, a season and its episode number!')
-        .setDescription('You can find ISO 639-2 codes [here](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes \'https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes\')!'));
+        .setDescription('You can find ISO 639-2 codes [here](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes \'https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes\')!' + process.logos));
 
     if (args[0].length !== 3) return message.channel.sendUtil.Embed().setTitle('You must supply a valid ISO 639-2 code!')
-       .setDescription('[ISO 639-2 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes \'https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes\')');
+       .setDescription('[ISO 639-2 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes \'https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes\')' + process.logos);
 
     let seasonAndEpisode = Util.parseSeriesEpisodeString(args[1]);
-    if (!seasonAndEpisode) return message.channel.send(Util.Embed().setTitle('You must supply a valid episode and season!').setDescription('Acceptable formats: S00E00, 00x00 and 000'));
+    if (!seasonAndEpisode) return message.channel.send(Util.Embed().setTitle('You must supply a valid episode and season!').setDescription('Acceptable formats: S00E00, 00x00 and 000' + process.logos));
 
     const show = {
         id: 'tt1190634',
@@ -43,7 +43,7 @@ export async function run(message, args) {
 
     }).then(subtitles => {
         const embed = Util.Embed().setTitle(`Subtitles for: ${show.title} ${seasonAndEpisode.season}x${seasonAndEpisode.episode}`)
-        .setDescription('Here are the best results from opensubtitles.org:');
+        .setDescription('Here are the best results from opensubtitles.org:' + process.logos);
 
         for (let sub of Object.values(subtitles)[0]) {
             embed.addField(sub.filename, `**[Download SRT](${sub.url} '${sub.url}')** Lang: \`${sub.lang}\` Score: \`${sub.score}\``);
