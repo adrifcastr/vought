@@ -1,4 +1,5 @@
 import Discord from 'discord.js';
+import { Util } from 'discord.js';
 
 class Checks {
     constructor() {
@@ -13,9 +14,11 @@ class Checks {
         if (!message.guild) return;
         if (message.editedAt) return;
         if (message.content.match(/<?(a)?:?(\w{2,32}):(\d{17,19})>?/)) return;
-
+        const wish = 'https://cdn.discordapp.com/attachments/715564004621418577/766610314677583873/Wish_by_Starlight.mp4';
+        const sauce = 'https://cdn.discordapp.com/attachments/715564004621418577/766613824480477184/Kirei_Shoyu_The_Deep.mp4';
         if (message.content.match(/(?:#hughlight)/i)) Util.IMG('D9sczOE', message);
-
+        else if (message.content.match(/(?:wish)/i) && message.content.match(/(?:by)/i) && message.content.match(/(?:starlight)/i)) message.channel.send('Presenting Wish™ by Starlight:\n' + wish);
+        else if (message.content.match(/(?:deep)/i) && message.content.match(/(?:hot)/i) && message.content.match(/(?:sauce)/i)) message.channel.send('Presenting The Deep\'s Kirei Shoyu Hot Sauce:\n' + sauce);
     }
 
     /**
@@ -23,14 +26,14 @@ class Checks {
      * @param {Discord.Message} message 
      */
     static async RulesCheck(message) {
-        let member = await process.vought.guilds.cache.get('604160368490577930').members.fetch(message.author.id);
+        let member = await process.vought.guilds.cache.get('604160368490577930').members.fetch(message.author.id).catch(ex => Util.log(ex));
 
         if (!member) return;
         if (member.roles.cache.has('766304492165005323')) return;
 
         const role = process.vought.guilds.cache.get('604160368490577930').roles.cache.get('766304492165005323');
-        await member.roles.add(role);
-        message.reply('You have been verified and gained access to the guild!');
+        await member.roles.add(role).catch(ex => Util.log(ex));
+        message.reply('You have been verified and gained access to the guild!').catch(ex => Util.log(ex));
     }
 }
 export default Checks;
