@@ -12,7 +12,6 @@ class Checks {
     static async CSD(message, Util) {
         if (!message.guild) return;
         if (message.editedAt) return;
-        if (message.content.match(/<?(a)?:?(\w{2,32}):(\d{17,19})>?/)) return;
         if (message.content.match(/(?:#hughlight)/i)) Util.IMG('D9sczOE', message);
         else if (message.content.match(/(?:wish)/i) && message.content.match(/(?:by)/i) && message.content.match(/(?:starlight)/i)) message.channel.send('Presenting Wish™ by Starlight:\n', { files: ['./data/video/Wish by Starlight.mp4'] });
         else if (message.content.match(/(?:deep)/i) && message.content.match(/(?:soy)/i) && message.content.match(/(?:sauce)/i)) message.channel.send('Presenting The Deep\'s Kirei Shoyu Soy Sauce:\n', { files: ['./data/video/Kirei Shoyu The Deep.mp4'] });
