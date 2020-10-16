@@ -18,7 +18,7 @@ class Checks {
         const sauce = 'https://cdn.discordapp.com/attachments/715564004621418577/766613824480477184/Kirei_Shoyu_The_Deep.mp4';
         if (message.content.match(/(?:#hughlight)/i)) Util.IMG('D9sczOE', message);
         else if (message.content.match(/(?:wish)/i) && message.content.match(/(?:by)/i) && message.content.match(/(?:starlight)/i)) message.channel.send('Presenting Wish™ by Starlight:\n' + wish);
-        else if (message.content.match(/(?:deep)/i) && message.content.match(/(?:hot)/i) && message.content.match(/(?:sauce)/i)) message.channel.send('Presenting The Deep\'s Kirei Shoyu Hot Sauce:\n' + sauce);
+        else if (message.content.match(/(?:deep)/i) && message.content.match(/(?:soy)/i) && message.content.match(/(?:sauce)/i)) message.channel.send('Presenting The Deep\'s Kirei Shoyu Hot Sauce:\n' + sauce);
     }
 
     /**
