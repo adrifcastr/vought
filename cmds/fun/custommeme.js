@@ -9,6 +9,7 @@ import Util from '../../Util.js';
 export async function run(message, args) {
     const text = args.join(' ');
     if (!text.includes(',')) return message.reply('you need to seperate two phrases with one comma!');
+    if (text.length < 2) return message.reply('you need to provide actual input!');
     const split = text.split(',');
 
     const canvas = Canvas.createCanvas(683, 487);
@@ -18,11 +19,11 @@ export async function run(message, args) {
 
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-    ctx.font = '40px sans-serif';
+    ctx.font = '35px sans-serif';
     ctx.fillStyle = '#000000';
     ctx.fillText(split[0].trim(), canvas.width / 40.0, canvas.height / 10.0);
 
-    ctx.font = '40px sans-serif';
+    ctx.font = '35px sans-serif';
     ctx.fillStyle = '#000000';
     ctx.fillText(split[1].trim(), canvas.width / 40.0, canvas.height / 4.5);
 
