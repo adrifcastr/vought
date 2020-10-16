@@ -1,5 +1,4 @@
 import Discord from 'discord.js';
-import Util from 'discord.js';
 
 class Checks {
     constructor() {
@@ -14,6 +13,7 @@ class Checks {
         if (!message.guild) return;
         if (message.editedAt) return;
         if (message.content.match(/<?(a)?:?(\w{2,32}):(\d{17,19})>?/)) return;
+        const attachment = new Discord.MessageAttachment('tbmeme.jpg');
         const wish = 'https://cdn.discordapp.com/attachments/715564004621418577/766610314677583873/Wish_by_Starlight.mp4';
         const sauce = 'https://cdn.discordapp.com/attachments/715564004621418577/766613824480477184/Kirei_Shoyu_The_Deep.mp4';
         const brave = 'https://cdn.discordapp.com/attachments/715564004621418577/766702501117558795/Brave_Maeve_Pride_Bar.mp4';
@@ -27,7 +27,7 @@ class Checks {
      * Rules check
      * @param {Discord.Message} message 
      */
-    static async RulesCheck(message) {
+    static async RulesCheck(message, Util) {
         let member = await process.vought.guilds.cache.get('604160368490577930').members.fetch(message.author.id).catch(ex => Util.log(ex));
 
         if (!member) return;
