@@ -1,5 +1,5 @@
 import Discord from 'discord.js';
-import { Util } from 'discord.js';
+import Util from 'discord.js';
 
 class Checks {
     constructor() {
