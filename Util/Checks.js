@@ -1,4 +1,5 @@
 import Discord from 'discord.js';
+import fs from 'fs'
 
 class Checks {
     constructor() {
@@ -13,14 +14,16 @@ class Checks {
         if (!message.guild) return;
         if (message.editedAt) return;
         if (message.content.match(/<?(a)?:?(\w{2,32}):(\d{17,19})>?/)) return;
-        const attachment = new Discord.MessageAttachment('tbmeme.jpg');
         const wish = 'https://cdn.discordapp.com/attachments/715564004621418577/766610314677583873/Wish_by_Starlight.mp4';
         const sauce = 'https://cdn.discordapp.com/attachments/715564004621418577/766613824480477184/Kirei_Shoyu_The_Deep.mp4';
         const brave = 'https://cdn.discordapp.com/attachments/715564004621418577/766702501117558795/Brave_Maeve_Pride_Bar.mp4';
         if (message.content.match(/(?:#hughlight)/i)) Util.IMG('D9sczOE', message);
         else if (message.content.match(/(?:wish)/i) && message.content.match(/(?:by)/i) && message.content.match(/(?:starlight)/i)) message.channel.send('Presenting Wish™ by Starlight:\n' + wish);
         else if (message.content.match(/(?:deep)/i) && message.content.match(/(?:soy)/i) && message.content.match(/(?:sauce)/i)) message.channel.send('Presenting The Deep\'s Kirei Shoyu Soy Sauce:\n' + sauce);
-        else if (message.content.match(/(?:brave)/i) && message.content.match(/(?:maeve)/i) && message.content.match(/(?:pride)/i) && message.content.match(/(?:bar)/i)) message.channel.send('Brave Maeve Pride Bars. Because you can\'t be proud on an empty stomach.\n' + brave);
+        else if (message.content.match(/(?:wish)/i) && message.content.match(/(?:public)/i) && message.content.match(/(?:starlight)/i)) message.channel.send('Presenting Wish™ by Starlight:\n', { files: ['./data/video/Wish by Starlight.mp4'] });
+        else if (message.content.match(/(?:deep)/i) && message.content.match(/(?:public)/i) && message.content.match(/(?:sauce)/i)) message.channel.send('Presenting The Deep\'s Kirei Shoyu Soy Sauce:\n', { files: ['./data/video/Kirei Shoyu The Deep.mp4'] });
+        else if (message.content.match(/(?:brave)/i) && message.content.match(/(?:maeve)/i) && message.content.match(/(?:pride)/i) && message.content.match(/(?:bar)/i)) message.channel.send('Brave Maeve Pride Bars. Because you can\'t be proud on an empty stomach.\n'+ brave);
+        else if (message.content.match(/(?:brave)/i) && message.content.match(/(?:maeve)/i) && message.content.match(/(?:pride)/i) && message.content.match(/(?:public)/i)) message.channel.send('Brave Maeve Pride Bars. Because you can\'t be proud on an empty stomach.\n', { files: ['./data/video/Brave Maeve Pride Bar.mp4'] });
     }
 
     /**
