@@ -19,11 +19,11 @@ export async function run(message, args) {
 
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-    ctx.font = '40px sans-serif';
+    ctx.font = '35px sans-serif';
     ctx.fillStyle = '#000000';
     ctx.fillText(split[0].trim(), canvas.width / 40.0, canvas.height / 10.0);
 
-    ctx.font = '40px sans-serif';
+    ctx.font = '35px sans-serif';
     ctx.fillStyle = '#000000';
     ctx.fillText(split[1].trim(), canvas.width / 40.0, canvas.height / 4.5);
 
