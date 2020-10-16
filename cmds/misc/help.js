@@ -15,6 +15,7 @@ export async function run(message, args) {
             .setTitle('__Use .help <module> to get a list of commands__')
             .setDescription('Use `.help syntax` for command syntax explanations\nMy prefixes are: ' + prefixes)
             .addField('main (`'+ cmdamount.filter(x => x.help.type === 'main').length + ' available`)', 'Main features')  
+            .addField('fun (`'+ cmdamount.filter(x => x.help.type === 'fun').length + ' available`)', 'Fun and interactive commands')  
             .addField('owner (`'+ cmdamount.filter(x => x.help.type === 'owner').length + ' available`)', 'Application owner only commands')    
             .addField('misc (`'+ cmdamount.filter(x => x.help.type === 'misc').length + ' available`)', 'Miscellaneous commands')    
             .addField('Total amount:', `\`${cmdamount.length}\` commands available`)   
@@ -32,6 +33,7 @@ export async function run(message, args) {
 
     let type = '';
     if (args[0].match(/(?:main)/i)) type = 'main';
+    else if (args[0].match(/(?:fun)/i)) type = 'fun';
     else if (args[0].match(/(?:owner)/i)) type = 'owner';
     else if (args[0].match(/(?:misc)/i)) type = 'misc';
     else return message.channel.send(Util.Embed().setTitle(`${args[0]} is not a valid argument!`));
