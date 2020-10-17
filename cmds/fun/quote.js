@@ -8,7 +8,7 @@ export async function run(message) {
    const quote = body[Math.floor(Math.random() * body.length)];
 
    const embed = Util.Embed()
-   .setDescription('**' + quote.quote + '\n\n~' + quote.author + '**')
+   .setDescription('**' + quote.quote + '\n\n~' + quote.author + '**' + process.logos)
    .setThumbnail(quote.img)
 
    message.channel.send(embed);
