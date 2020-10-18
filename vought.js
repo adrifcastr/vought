@@ -85,7 +85,7 @@ vought.on('guildMemberAdd', member => {
     channel.send(`${member} welcome and thank you for choosing Vought International<:vought:766413861816893440>!\nTo gain full access to this guild, please carefully read through <#604451022907244574> and follow the given instructions!` + process.logos);
 });
 
-vought.on('guildMemberUpdate', (oldMember, newMember) => {
+vought.on('guildMemberUpdate', async (oldMember, newMember) => {
     if (newMember.roles.cache.has('604161294194442252')) {
         if (newMember.roles.cache.has('604161397588230154')) await newMember.roles.remove('604161397588230154').catch(ex => Util.log(ex));
     }
