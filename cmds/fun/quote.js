@@ -15,9 +15,9 @@ export async function run(message) {
 }
 
 export const help = {
-    name: 'meme',
+    name: 'quote',
     type: 'fun',
-    help_text: 'meme',
+    help_text: 'quote',
     help_desc: 'Fetches a random The Boys quote',
     owner: false,
     args: {},
