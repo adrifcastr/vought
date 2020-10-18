@@ -38,7 +38,7 @@ vought.once('ready', async () => {
 
     await process.vought.guilds.cache.get('604160368490577930').members.fetch();
     const rolemembers = process.vought.guilds.cache.get('604160368490577930').members.cache.filter(x => x.roles.cache.has('604161397588230154'));
-    rolemembers.each(member => await member.roles.remove('604161397588230154').then(await Util.delay(5000)));
+    rolemembers.each(member => member.roles.remove('604161397588230154').then(await Util.delay(5000)));
 });
 
 process.on('uncaughtException', err => {
