@@ -9,6 +9,7 @@ export async function run(message) {
 
     const user = message.mentions.users.first();
     if (user.id === auth.id || user.id === process.vought.user.id) return message.channel.send(Util.Embed().setTitle('My protocols forbid any kind of self-harm!'));
+    else if (user.bot) return message.channel.send(Util.Embed().setTitle('Please mention a human!'));
 
     const boom = {
         text: `you exploded the head of ${user}!`,
