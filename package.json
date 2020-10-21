@@ -5,11 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js",
+    "start": "bash install_node_13.sh && node index.js",
     "test": "node index.js"
   },
   "author": "adrifcastr",
-  "engines": { "node": "13.x" },
   "dependencies": {
     "canvas": "^2.6.1",
     "discord-paginationembed": "^2.0.0",
