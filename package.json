@@ -8,6 +8,7 @@
     "test": "node index.js"
   },
   "author": "adrifcastr",
+  "engines": { "node": "14.x" },
   "dependencies": {
     "canvas": "^2.6.1",
     "discord-paginationembed": "^2.0.0",
