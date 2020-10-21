@@ -15,6 +15,7 @@
     "dotenv": "^8.2.0",
     "git-last-commit": "^1.0.0",
     "imgur-node": "^0.2.0",
+    "magnet2torrent-js": "^1.4.0",
     "moment": "^2.29.1",
     "node-fetch": "^2.6.0",
     "opensubtitles-api": "^5.1.2",
