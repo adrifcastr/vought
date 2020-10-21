@@ -19,6 +19,7 @@ export async function run(message, args) {
             .addField('owner (`'+ cmdamount.filter(x => x.help.type === 'owner').length + ' available`)', 'Application owner only commands')    
             .addField('misc (`'+ cmdamount.filter(x => x.help.type === 'misc').length + ' available`)', 'Miscellaneous commands')    
             .addField('Total amount:', `\`${cmdamount.length}\` commands available`)   
+            .addField('Feature suggestions:', '[Send them here](https://discordapp.com/channels/604160368490577930/604451093044527190 \'#suggestions\')')
 
         return message.channel.send(help);
     }
@@ -27,6 +28,7 @@ export async function run(message, args) {
         const help = Util.Embed()
         .setTitle('__Command Syntax:__')
         .setDescription('My prefixes are: ' + prefixes + '\nArguments wrapped in `<>` are variables. _do not actually add brackets_\nArguments seperated by `/` mean `this or(/) this`.\nArguments wrapped in `[]` are optional arguments.\nCommands marked with :warning: are potentially dangerous.\nCommands marked with :shield: require certain permissions.\nCommands marked with `@role` require the mentioned role.')
+        .addField('Feature suggestions:', '[Send them here](https://discordapp.com/channels/604160368490577930/604451093044527190 \'#suggestions\')')
 
         return message.channel.send(help);
     }
@@ -90,6 +92,7 @@ export async function run(message, args) {
                 marks[item] = mo;
                 
                 embed.addField('.' + item + ` ${marks[item].emotes.join('')}${marks[item].roles.length > 0 ? '`' + marks[item].roles.join(' ') + '`' : ''}`, commands[item].help_desc);
+                embed.addField('Feature suggestions:', '[Send them here](https://discordapp.com/channels/604160368490577930/604451093044527190 \'#suggestions\')')
             }
             pages.push(embed);
         }
@@ -139,6 +142,7 @@ export async function run(message, args) {
 
             embed.addField('.' + item + ` ${marks[item].emotes.join('')}${marks[item].roles.length > 0 ? '`' + marks[item].roles.join(' ') + '`' : ''}`, commands[item].help_desc);
         }
+        embed.addField('Feature suggestions:', '[Send them here](https://discordapp.com/channels/604160368490577930/604451093044527190 \'#suggestions\')')
         message.channel.send(embed);
     }
 }   
