@@ -17,7 +17,7 @@ class Checks {
         else if (message.content.match(/(?:deep)/i) && message.content.match(/(?:soy)/i) && message.content.match(/(?:sauce)/i)) message.channel.send('Presenting The Deep\'s Kirei Shoyu Soy Sauce:\n', { files: ['./data/video/Kirei Shoyu The Deep.mp4'] });
         else if (message.content.match(/(?:brave)/i) && message.content.match(/(?:maeve)/i) && message.content.match(/(?:pride)/i) && message.content.match(/(?:bar)/i)) message.channel.send('Brave Maeve Pride Bars. Because you can\'t be proud on an empty stomach.\n', { files: ['./data/video/Brave Maeve Pride Bar.mp4'] });
         else if (message.content.match(/(?:boom)/i) && message.content.match(/(?:pow)/i) && message.content.match(/(?:noir)/i)) message.channel.send('Boom Pow Noir - Starlight vs. Black Noir Orig. Cut:\n', { files: ['./data/video/Boom Pow Noir.mp4'] });
-        else if (message.content.match(/(?:everyone)/i) && message.content.match(/(?:get)/i) && message.content.match(/(?:the)/i) && message.content.match(/(?:fuck)/i) && message.content.match(/(?:out)/i)) message.channel.send({ files: ['./data/video/Everyone get The Fuck Out.mp4'] });
+        else if (message.content.match(/(?:everyone)/i) && message.content.match(/(?:get)/i) && message.content.match(/(?:the)/i) && message.content.match(/(?:fuck)/i) && message.content.match(/(?:out)/i)) message.channel.send({ files: ['./data/video/Everyone Get The Fuck Out.mp4'] });
     }
 
     /**
