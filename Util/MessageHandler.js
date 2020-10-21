@@ -10,7 +10,7 @@ class MsgHandler {
     static async Handle(message, Util) {
         if (!message || !message.author || message.partial || message.type != 'DEFAULT') return;
         if (!message.guild) {
-            if (message.content.match(/^\bLiberty\b$/)) Util.Checks.RulesCheck(message, Util);
+            if (message.content.match(/^\bliberty\b$/i)) Util.Checks.RulesCheck(message, Util);
             return;
         }
         
