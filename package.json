@@ -1,11 +1,11 @@
 {
-  "name": "order",
+  "name": "vought",
   "version": "1.0.0",
   "description": "The Boys inspired Discord Bot",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "bash install_node_13.sh && node index.js",
+    "start": "node index.js",
     "test": "node index.js"
   },
   "author": "adrifcastr",
