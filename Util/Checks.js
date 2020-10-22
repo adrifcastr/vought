@@ -19,6 +19,7 @@ class Checks {
         else if (message.content.match(/(?:boom)/i) && message.content.match(/(?:pow)/i) && message.content.match(/(?:noir)/i)) message.channel.send('Boom Pow Noir - Starlight vs. Black Noir Orig. Cut:\n', { files: ['./data/video/Boom Pow Noir.mp4'] });
         else if (message.content.match(/(?:everyone)/i) && message.content.match(/(?:get)/i) && message.content.match(/(?:the)/i) && message.content.match(/(?:fuck)/i) && message.content.match(/(?:out)/i)) message.channel.send({ files: ['./data/video/Everyone Get The Fuck Out.mp4'] });
         else if (message.content.match(/(?:begone)/i) && message.content.match(/(?:thot)/i)) message.channel.send(Util.Embed().setImage('https://cdn.discordapp.com/attachments/608796284488515588/768901541011783680/image0.jpg'));
+        else if (message.content.match(/(?:starlight)/i) && message.content.match(/(?:black)/i) && message.content.match(/(?:noir)/i) && message.content.match(/(?:floss)/i)) message.channel.send({ files: ['./data/video/Erin Moriarty Nathan Mitchell Floss.mp4'] });
     }
 
     /**
