@@ -19,12 +19,12 @@
     "magnet2torrent-js": "^1.4.0",
     "moment": "^2.29.1",
     "node-fetch": "^2.6.0",
-    "nodemon": "^2.0.6",
     "opensubtitles-api": "^5.1.2",
     "pretty-error": "^2.1.1",
     "recursive-readdir": "^2.2.2"
   },
   "devDependencies": {
     "node-gyp-build": "^4.2.3"
-  }
+  },
+  "nodeVersion": "14.3.0"
 }
