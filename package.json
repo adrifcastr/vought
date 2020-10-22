@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js ",
+    "start": "node index.js ",
     "test": "node index.js"
   },
   "author": "adrifcastr",
@@ -25,9 +25,6 @@
     "recursive-readdir": "^2.2.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/node": "^7.12.1",
-    "@babel/preset-env": "^7.12.1"
+    "node-gyp-build": "^4.2.3"
   }
 }
