@@ -3,14 +3,6 @@ import Discord from 'discord.js';
 import git from 'git-last-commit';
 import config from './data/config/config.js';
 
-import express from 'express';
-const app = express();
-const port = 3000;
-
-app.get('/', (req, res) => res.send('Hello World!'));
-
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
-
 const manager = new Discord.ShardingManager('./vought.js', {token: process.env.CLIENT_TOKEN});
 manager.spawn().then(LogCount);
 
