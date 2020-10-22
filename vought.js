@@ -87,10 +87,10 @@ vought.on('guildMemberAdd', member => {
 
 vought.on('guildMemberUpdate', async (oldMember, newMember) => {
     if (newMember.roles.cache.has('604161294194442252')) {
-        if (newMember.roles.cache.has('604160368490577930')) await newMember.roles.remove('604160368490577930').catch(ex => Util.log(ex));
+        if (newMember.roles.cache.has('766304492165005323')) await newMember.roles.remove('766304492165005323').catch(ex => Util.log(ex));
     }
     else if (newMember.roles.cache.has('756529293990821998')) {
-        if (newMember.roles.cache.has('604160368490577930')) await newMember.roles.remove('604160368490577930').catch(ex => Util.log(ex));
+        if (newMember.roles.cache.has('766304492165005323')) await newMember.roles.remove('766304492165005323').catch(ex => Util.log(ex));
     }
 });
 
