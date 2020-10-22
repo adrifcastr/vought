@@ -19,6 +19,9 @@ class MsgHandler {
         if (message.channel.type !== 'text') return;
         if (!message.channel.permissionsFor(message.guild.me).has('SEND_MESSAGES')) return;
 
+        if (!message.member) await message.member.fetch();
+        if (message.member.roles.cache.has('768904238629388328')) return;
+        
         const lowercaseContent = message.content.toLowerCase();
 
         Util.Checks.CSD(message, Util); //eastereggs
