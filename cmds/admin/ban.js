@@ -16,7 +16,7 @@ export async function run(message, args) {
     .setImage('https://media.discordapp.net/attachments/715564004621418577/769212118464725002/Homelander_2.gif')
 
     await member.send(dmembed).catch(ex => Util.log(ex));
-    await member.ban({ days: 7, reason: reason ? reason : 'no reason specified' }).catch(ex => { Util.log(ex); message.channel.send('Couldn\'t ban this member. Please make sure that my role is higher then theirs.') });
+    await member.ban({ days: 7, reason: reason ? reason : 'no reason specified' }).catch(ex => { Util.log(ex); return message.channel.send('Couldn\'t ban this member. Please make sure that my role is higher then theirs.') });
 
     const embed = Util.Embed()
     .setDescription(`\`${member.user.tag}\` has been banned by ${message.author}${reason ? ` because of \`${reason}\`` : ''}.` + process.logos)
