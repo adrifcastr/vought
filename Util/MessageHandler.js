@@ -60,6 +60,14 @@ class MsgHandler {
                 }
             }   
 
+            if (command.help.bot_perms && command.help.bot_perms.length > 0) {
+                let missingperms = [];
+                for (let perms of command.help.bot_perms) {
+                    if (!message.channel.permissionsFor(message.guild.me).has(perms)) missingperms.push(perms);
+                }
+                if (missingperms.length > 0) return message.reply('Sorry I can\'t do that without having the required permissions for this command!\nRequired permissions: ' + missingperms.map(x => `\`${x}\``).join(' '));
+            }
+
             if (command.help.nsfw) {
                 if (!message.channel.nsfw) {
                     process.gideon.emit('commandRefused', message, 'NSFW_REQUIRED');
@@ -113,6 +121,8 @@ class MsgHandler {
         if (command.help.args.force) {
             const noinput = Util.Embed().setTitle('You must supply valid input!');
             const nomention = Util.Embed().setTitle('You must supply a valid mention!');
+            const nomember = Util.Embed().setTitle('You must supply a valid mention or ID!');
+            const noid =  Util.Embed().setTitle('You must supply a valid ID!');
             const noepisode = Util.Embed().setTitle('You must supply a valid episode and season!').setDescription('Acceptable formats: S00E00, 00x00 and 000' + process.logos);
             const nonum = Util.Embed().setTitle('You must supply a valid number!');
 
@@ -132,6 +142,16 @@ class MsgHandler {
 
             if (command.help.args.type && command.help.args.type === 'integer') {
                 if (isNaN(args[1])) return message.channel.send(nonum);
+            }
+
+            if (command.help.args.type && command.help.args.type === 'snowflake') {
+                if (!Util.ValID(args[0])) return message.channel.send(noid);
+            }
+
+            if (command.help.args.type && command.help.args.type === 'member') {
+                if (!message.mentions.members.first()) {
+                    if (!Util.ValID(args[0])) return message.channel.send(nomember);
+                } 
             }
         }
 

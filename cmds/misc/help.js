@@ -17,6 +17,7 @@ export async function run(message, args) {
             .addField('main (`'+ cmdamount.filter(x => x.help.type === 'main').length + ' available`)', 'Main features')  
             .addField('fun (`'+ cmdamount.filter(x => x.help.type === 'fun').length + ' available`)', 'Fun and interactive commands')  
             .addField('owner (`'+ cmdamount.filter(x => x.help.type === 'owner').length + ' available`)', 'Application owner only commands')    
+            .addField('admin (`'+ cmdamount.filter(x => x.help.type === 'admin').length + ' available`)', 'Administrative commands')    
             .addField('misc (`'+ cmdamount.filter(x => x.help.type === 'misc').length + ' available`)', 'Miscellaneous commands')    
             .addField('Total amount:', `\`${cmdamount.length}\` commands available`)   
             .addField('Feature suggestions:', '[Send them here](https://discordapp.com/channels/604160368490577930/604451093044527190 \'#suggestions\')')
@@ -37,6 +38,7 @@ export async function run(message, args) {
     if (args[0].match(/(?:main)/i)) type = 'main';
     else if (args[0].match(/(?:fun)/i)) type = 'fun';
     else if (args[0].match(/(?:owner)/i)) type = 'owner';
+    else if (args[0].match(/(?:admin)/i)) type = 'admin';
     else if (args[0].match(/(?:misc)/i)) type = 'misc';
     else return message.channel.send(Util.Embed().setTitle(`${args[0]} is not a valid argument!`));
 

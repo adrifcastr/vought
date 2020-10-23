@@ -207,6 +207,15 @@ class Util {
     }
 
     /**
+     * Parse Snowflakes
+     * @param {string} input
+     */
+    static ValID(input) {
+        if (!input.match(/\d{17,19}/)) return null;
+        else return input.match(/\d{17,19}/)[0];
+    }
+
+    /**
      * Load cmds
      */
     static LoadCommands() {
