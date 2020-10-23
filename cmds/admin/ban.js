@@ -12,14 +12,14 @@ export async function run(message, args) {
     if (args[1]) reason = args.slice(1).join(' ');
 
     const dmembed = Util.Embed()
-    .setDescription(`You have been banned by \`${message.author.tag}\`${reason ? ` because of \`${reason}\`` : ''}.`)
+    .setDescription(`You have been banned by \`${message.author.tag}\`${reason ? ` because of \`${reason}\`` : ''}.` + process.logos)
     .setImage('https://media.discordapp.net/attachments/715564004621418577/769212118464725002/Homelander_2.gif')
 
     await member.send(dmembed).catch(ex => Util.log(ex));
     await member.ban({ days: 7, reason: reason ? reason : 'no reason specified' }).catch(ex => { Util.log(ex); message.channel.send('Couldn\'t ban this member. Please make sure that my role is higher then theirs.') });
 
     const embed = Util.Embed()
-    .setDescription(`\`${member.user.tag}\` has been banned by ${message.author}${reason ? ` because of \`${reason}\`` : ''}.`)
+    .setDescription(`\`${member.user.tag}\` has been banned by ${message.author}${reason ? ` because of \`${reason}\`` : ''}.` + process.logos)
     .setImage('https://media.discordapp.net/attachments/715564004621418577/769212118464725002/Homelander_2.gif')
 
     message.channel.send(embed);
