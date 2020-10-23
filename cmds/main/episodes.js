@@ -54,7 +54,7 @@ export async function run(message, args) {
 export const help = {
     name: ['ep', 'episode'],
     type: 'main',
-    help_text: 'ep <show> <NxNN|SNENN|NNN> ',
+    help_text: 'ep <NxNN|SNENN|NNN> ',
     help_desc: 'Fetches episode info',
     owner: false,
     voice: false,
