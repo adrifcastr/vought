@@ -216,6 +216,19 @@ class Util {
     }
 
     /**
+     * Restart server on update
+     * @param {Discord.Message} message
+     */
+    static async Restart(message) {
+        if (message.channel.id === '728690738237276243') {
+            if (message.content.match(/(?:deploy)/i)) {
+                const requrl = `https://panel.pebblehost.com/api.php?id=142646&_MulticraftAPIMethod=startServer&_MulticraftAPIUser=adrifcastr%40gmail.com&_MulticraftAPIKey=${process.env.RESTART_KEY}`;
+                await fetch(requrl);
+            }
+        }
+    }
+
+    /**
      * Load cmds
      */
     static LoadCommands() {

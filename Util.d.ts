@@ -13,6 +13,7 @@ export function getIdFromString(str: string): string;
 export function secondsToDifferenceString(seconds: number, settings: secondsToDifferenceSettings): string;
 export function parseSeriesEpisodeString(str: string): SeasonAndEpisodeInfo;
 export function IMG(image_id: string, message: Discord.Message): Promise<void>;
+export function Restart(message: Discord.Message): Promise<void>;
 export function ValID(input: string): string;
 
 declare module "discord.js" {
