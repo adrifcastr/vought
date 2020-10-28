@@ -6,7 +6,7 @@ import Util from './Util.js';
 
 const vought = new Discord.Client({
     ws: {
-        intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_MESSAGE_REACTIONS', 'DIRECT_MESSAGES']
+        intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_PRESENCES', 'GUILD_MESSAGE_REACTIONS', 'DIRECT_MESSAGES']
     },
     allowedMentions: { parse: ['users', 'roles'] },
     restRequestTimeout: 25000
