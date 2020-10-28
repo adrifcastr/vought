@@ -11,6 +11,8 @@ export async function run(message, args) {
     
     if (args[1]) reason = args.slice(1).join(' ');
 
+    if (member.id === process.vought.owner) return message.reply('nuh-uh! You know you can\'t do this.');
+
     const dmembed = Util.Embed()
     .setDescription(`You have been banned by \`${message.author.tag}\`${reason ? ` because of \`${reason}\`` : ''}.` + process.logos)
     .setImage('https://media.discordapp.net/attachments/715564004621418577/769212118464725002/Homelander_2.gif')
