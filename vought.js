@@ -61,7 +61,7 @@ vought.on('error', err => {
 
 vought.on('message', message => {
     Util.MsgHandler.Handle(message, Util);
-    //Util.Restart(message);
+    Util.Restart(message);
 });
 
 vought.on('shardReady', async (id, unavailableGuilds) => {
