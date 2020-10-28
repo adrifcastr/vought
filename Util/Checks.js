@@ -28,6 +28,8 @@ class Checks {
         else if (message.content.match(/(?:weird)/i) && message.content.match(/(?:with)/i) && message.content.match(/(?:milk)/i) && message.content.match(/(?:dangerous)/i) && message.content.match(/(?:to)/i) && message.content.match(/(?:tits)/i)) message.channel.send({ files: ['./data/video/Weird With Milk Dangerous To Tits.mp4'] });
         else if (message.content.match(/(?:you'll)/i) && message.content.match(/(?:never)/i) && message.content.match(/(?:truly)/i) && message.content.match(/(?:vanish)/i)) message.channel.send({ files: ['./data/video/Never Truly Vanish.mp4'] });
         else if (message.content.match(/(?:i)/i) && message.content.match(/(?:can)/i) && message.content.match(/(?:do)/i) && message.content.match(/(?:whatever)/i) && message.content.match(/(?:the)/i) && message.content.match(/(?:fuck)/i) && message.content.match(/(?:want)/i)) message.channel.send(Util.Embed().setImage('https://media1.tenor.com/images/f96d9e71d6260a71a03679aa6f2eb6e4/tenor.gif'));
+        else if (message.content.match(/(?:hey)/i) && message.content.match(/(?:dude)/i) && message.content.match(/(?:that's)/i) && message.content.match(/(?:not)/i) && message.content.match(/(?:cool)/i)) message.channel.send({ files: ['./data/video/Hey Dude That\'s Not Cool.mp4'] });
+        else if (message.content.match(/(?:come)/i) && message.content.match(/(?:on)/i) && message.content.match(/(?:guys)/i) && message.content.match(/(?:knock)/i) && message.content.match(/(?:it)/i) && message.content.match(/(?:off)/i)) message.channel.send({ files: ['./data/video/Come On Guys Knock It Off.mp4'] });
     }
 
     /**
