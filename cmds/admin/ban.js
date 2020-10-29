@@ -12,13 +12,14 @@ export async function run(message, args) {
     if (args[1]) reason = args.slice(1).join(' ');
 
     if (member.id === process.vought.owner) return message.reply('nuh-uh! You know you can\'t do this.');
+    if (!member.bannable) return message.reply('I cannot ban this member due to either it being the guild owner or having a higher role then me.');
 
     const dmembed = Util.Embed()
     .setDescription(`You have been banned by \`${message.author.tag}\`${reason ? ` because of \`${reason}\`` : ''}.` + process.logos)
     .setImage('https://media.discordapp.net/attachments/715564004621418577/769212118464725002/Homelander_2.gif')
 
     await member.send(dmembed).catch(ex => Util.log(ex));
-    await member.ban({ days: 7, reason: reason ? reason : 'no reason specified' }).catch(ex => { Util.log(ex); return message.channel.send('Couldn\'t ban this member. Please make sure that my role is higher then theirs.') });
+    await member.ban({ days: 7, reason: reason ? reason : 'no reason specified' }).catch(ex => { Util.log(ex); return message.channel.send('Couldn\'t ban this member. Please make sure that my role is higher then theirs and that they\'re not the guild owner.') });
 
     const embed = Util.Embed()
     .setDescription(`\`${member.user.tag}\` has been banned by ${message.author}${reason ? ` because of \`${reason}\`` : ''}.` + process.logos)
