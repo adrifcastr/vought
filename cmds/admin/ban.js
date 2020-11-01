@@ -22,7 +22,7 @@ export async function run(message, args) {
     .setImage('https://media.discordapp.net/attachments/715564004621418577/769212118464725002/Homelander_2.gif')
 
     if (typeof member !== 'string') await member.send(dmembed).catch(ex => Util.log(ex));
-    await message.guild.members.ban(member, { days: 7, reason: reason ? reason : 'no reason specified' }).catch(ex => return message.channel.send('Couldn\'t ban this user. Please make sure that my role is higher then theirs and that they\'re not the guild owner.\nOtherwise Discord was unable to globally resolve the user.'));
+    await message.guild.members.ban(member, { days: 7, reason: reason ? reason : 'no reason specified' }).catch(ex => { return message.channel.send('Couldn\'t ban this user. Please make sure that my role is higher then theirs and that they\'re not the guild owner.\nOtherwise Discord was unable to globally resolve the user.'} ));
 
     const embed = Util.Embed()
     .setDescription(`\`${typeof member !== 'string' ? member.user.tag : args[0]}\` has been banned by ${message.author}${reason ? ` because of \`${reason}\`` : ''}.` + process.logos)
