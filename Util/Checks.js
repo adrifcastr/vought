@@ -30,6 +30,7 @@ class Checks {
         else if (message.content.match(/(?:i)/i) && message.content.match(/(?:can)/i) && message.content.match(/(?:do)/i) && message.content.match(/(?:whatever)/i) && message.content.match(/(?:the)/i) && message.content.match(/(?:fuck)/i) && message.content.match(/(?:want)/i)) message.channel.send(Util.Embed().setImage('https://media1.tenor.com/images/f96d9e71d6260a71a03679aa6f2eb6e4/tenor.gif'));
         else if (message.content.match(/(?:hey)/i) && message.content.match(/(?:dude)/i) && message.content.match(/(?:that's)/i) && message.content.match(/(?:not)/i) && message.content.match(/(?:cool)/i)) message.channel.send({ files: ['./data/video/Hey Dude That\'s Not Cool.mp4'] });
         else if (message.content.match(/(?:come)/i) && message.content.match(/(?:on)/i) && message.content.match(/(?:guys)/i) && message.content.match(/(?:knock)/i) && message.content.match(/(?:it)/i) && message.content.match(/(?:off)/i)) message.channel.send({ files: ['./data/video/Come On Guys Knock It Off.mp4'] });
+        else if (message.content.match(/(?:eat)/i) && message.content.match(/(?:my)/i) && message.content.match(/(?:shit)/i) && message.content.match(/(?:you)/i) && message.content.match(/(?:nazi)/i) && message.content.match(/(?:bitch)/i)) message.channel.send({ files: ['./data/video/Eat My Shit.mp4'] });
     }
 
     /**
