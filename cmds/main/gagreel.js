@@ -6,7 +6,7 @@ import Util from '../../Util.js';
 export async function run(message) {
     const embed = Util.Embed()
     .setTitle('Gag Reels:')
-    .setDescription('The Boys Season 1 - Gag Reel](https://www.youtube.com/watch?v=SH2HzjuBLfA)\n[The Boys Season 2 - Gag Reel](https://www.youtube.com/watch?v=DkxFko8NV6Q)' + process.logos)
+    .setDescription('[The Boys Season 1 - Gag Reel](https://www.youtube.com/watch?v=SH2HzjuBLfA)\n[The Boys Season 2 - Gag Reel](https://www.youtube.com/watch?v=DkxFko8NV6Q)' + process.logos)
 
     message.channel.send(embed);
 }
