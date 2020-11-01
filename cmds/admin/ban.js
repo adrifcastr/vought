@@ -12,7 +12,7 @@ export async function run(message, args) {
     if (args[1]) reason = args.slice(1).join(' ');
 
     if (member.id === process.vought.owner) return message.reply('nuh-uh! You know you can\'t do this.');
-    if (!member.bannable) return message.reply('I cannot ban this member due to either it being the guild owner or having a higher role then me.');
+    if (!member.bannable) return message.reply('I cannot ban this member due to either it being the guild owner or having a higher role than me.');
 
     const dmembed = Util.Embed()
     .setDescription(`You have been banned by \`${message.author.tag}\`${reason ? ` because of \`${reason}\`` : ''}.` + process.logos)
