@@ -12,7 +12,7 @@ export async function run(message) {
 }
 
 export const help = {
-    name: ['music',],
+    name: ['music'],
     type: 'main',
     help_text: 'music',
     help_desc: 'Listen to the shows\' soundtrack',
