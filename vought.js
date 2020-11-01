@@ -47,6 +47,7 @@ process.on('unhandledRejection', err => {
         Discord.Constants.APIErrors.UNKNOWN_MESSAGE,
         Discord.Constants.APIErrors.MISSING_ACCESS,
         Discord.Constants.APIErrors.CANNOT_MESSAGE_USER,
+        Discord.Constants.APIErrors.UNKNOWN_USER,
         Discord.Constants.APIErrors.UNKNOWN_CHANNEL
     ];
 
