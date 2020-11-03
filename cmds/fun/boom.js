@@ -15,7 +15,7 @@ export async function run(message) {
         text: `you exploded the head of ${user}!`,
         desc: 'KABOOM!',
         emote: ':exploding_head:',
-        gif: 'https://64.media.tumblr.com/8d435316bdb9e1f0dcfb825304ab318a/6903ff7698c29888-f0/s500x750/e3c9513d2bd23a9b085731c6d064e2b377b17127.gif'
+        gif: 'https://cdn.discordapp.com/attachments/715564004621418577/773261622730948648/16044303213819221192278806689065.gif'
     };
 
     message.channel.send(Util.Embed()
