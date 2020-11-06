@@ -24,7 +24,7 @@ export async function run(message, args) {
 
         message.channel.send(Util.truncate(printValue, 1900, true), {code: true});
     } catch (e) {
-        return message.channel.send(Util.Embed().setTitle('An error occurred while processing your request:').setDescription('```\n' + Util.truncate(e.stack, 400, true) + '```'));
+        return message.channel.send(Util.Embed(message.member).setTitle('An error occurred while processing your request:').setDescription('```\n' + Util.truncate(e.stack, 400, true) + '```'));
     }
 }
 

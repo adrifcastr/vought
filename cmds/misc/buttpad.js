@@ -4,7 +4,7 @@ import Util from '../../Util.js';
  * @param {Discord.Message} message
  */
 export async function run(message) {
-    message.channel.send(Util.Embed().setTitle('Toni Starr\'s backwards buttpad:').setImage('https://media.discordapp.net/attachments/604450661756829726/768539058858360904/4685.png'));
+    message.channel.send(Util.Embed(message.member).setTitle('Toni Starr\'s backwards buttpad:').setImage('https://media.discordapp.net/attachments/604450661756829726/768539058858360904/4685.png'));
 }
 
 export const help = {

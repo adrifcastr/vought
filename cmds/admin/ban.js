@@ -18,7 +18,7 @@ export async function run(message, args) {
     if (typeof member !== 'string') {
        if (member.id === process.vought.owner) return message.reply('nuh-uh! You know you can\'t do this.');
 
-       const dmembed = Util.Embed()
+       const dmembed = Util.Embed(message.member)
        .setDescription(`You have been banned by \`${message.author.tag}\`${reason ? ` because of \`${reason}\`` : ''}.` + process.logos)
        .setImage('https://media.discordapp.net/attachments/715564004621418577/769212118464725002/Homelander_2.gif')
 
@@ -28,7 +28,7 @@ export async function run(message, args) {
        if (member === process.vought.owner) return message.reply('nuh-uh! You know you can\'t do this.');
     }
     
-    const embed = Util.Embed()
+    const embed = Util.Embed(message.member)
     .setDescription(`\`${typeof member !== 'string' ? member.user.tag : args[0]}\` has been banned by ${message.author}${reason ? ` because of \`${reason}\`` : ''}.` + process.logos)
     .setImage('https://media.discordapp.net/attachments/715564004621418577/769212118464725002/Homelander_2.gif')
 

@@ -11,7 +11,7 @@ export async function run(message, args) {
     const cmdamount = Array.from(new Set(process.vought.commands.map(x=>JSON.stringify(x)))).map(x=>JSON.parse(x));
 
     if (!args[0]) {
-        const help = Util.Embed()
+        const help = Util.Embed(message.member)
             .setTitle('__Use .help <module> to get a list of commands__')
             .setDescription('Use `.help syntax` for command syntax explanations\nMy prefixes are: ' + prefixes)
             .addField('main (`'+ cmdamount.filter(x => x.help.type === 'main').length + ' available`)', 'Main features')  
@@ -26,7 +26,7 @@ export async function run(message, args) {
     }
     
     if (args[0].match(/(?:syntax)/i)) {
-        const help = Util.Embed()
+        const help = Util.Embed(message.member)
         .setTitle('__Command Syntax:__')
         .setDescription('My prefixes are: ' + prefixes + '\nArguments wrapped in `<>` are variables. _do not actually add brackets_\nArguments seperated by `/` mean `this or(/) this`.\nArguments wrapped in `[]` are optional arguments.\nCommands marked with :warning: are potentially dangerous.\nCommands marked with :shield: require certain permissions.\nCommands marked with `@role` require the mentioned role.')
         .addField('Feature suggestions:', '[Send them here](https://discordapp.com/channels/604160368490577930/604451093044527190 \'#suggestions\')')
@@ -40,7 +40,7 @@ export async function run(message, args) {
     else if (args[0].match(/(?:owner)/i)) type = 'owner';
     else if (args[0].match(/(?:admin)/i)) type = 'admin';
     else if (args[0].match(/(?:misc)/i)) type = 'misc';
-    else return message.channel.send(Util.Embed().setTitle(`${args[0]} is not a valid argument!`));
+    else return message.channel.send(Util.Embed(message.member).setTitle(`${args[0]} is not a valid argument!`));
 
     let commands = {};
     let marks = {};
@@ -61,7 +61,7 @@ export async function run(message, args) {
         let pages = [];
         
         for (let i = 0; i < arrs.length; i++) {
-            const embed = Util.Embed()
+            const embed = Util.Embed(message.member)
             .setTitle('__List of available "' + type + '" commands below:__')
             .setDescription('Use `.help syntax` for command syntax explanations\nMy prefixes are: ' + prefixes)
 
@@ -109,7 +109,7 @@ export async function run(message, args) {
     }
 
     else {
-        const embed = Util.Embed()
+        const embed = Util.Embed(message.member)
         .setTitle('__List of available "' + type + '" commands below:__')
         .setDescription('Use `.help syntax` for command syntax explanations\nMy prefixes are: ' + prefixes)
         

@@ -28,18 +28,18 @@ export async function run(message, args) {
         //new wikis do some weird stuff, therefore the actual result is the 2nd element
         const article = Object.values(body.items)[1];
 
-        if (!article) return message.channel.send(Util.Embed().setTitle(`There was no result for ${search_term} on the ${wiki.title} Wiki!\nPay attention to capitalization and spelling.`));
-        if (Object.keys(body.items).length < 1) return message.channel.send(Util.Embed().setTitle(`There was no result for ${search_term} on the ${wiki.title} Wiki!\nPay attention to capitalization and spelling.`));
+        if (!article) return message.channel.send(Util.Embed(message.member).setTitle(`There was no result for ${search_term} on the ${wiki.title} Wiki!\nPay attention to capitalization and spelling.`));
+        if (Object.keys(body.items).length < 1) return message.channel.send(Util.Embed(message.member).setTitle(`There was no result for ${search_term} on the ${wiki.title} Wiki!\nPay attention to capitalization and spelling.`));
         const url = article.url.replace(/\(/g, '%28').replace(/\)/g, '%29');
         
-        message.channel.send(Util.Embed().setTitle(article.title)
+        message.channel.send(Util.Embed(message.member).setTitle(article.title)
         .setDescription(`${article.abstract + '...'}\n\n**[Click here to read the full article](https://${wiki.url}${url} 'https://${wiki.url}${url}')**` + process.logos)
         .setThumbnail(article.thumbnail)); 
     }
 
     catch (ex) {
         Util.log('Error occurred while fetching data from wiki: ' + ex.stack);
-        message.channel.send(Util.Embed().setTitle('Failed to fetch info from wiki!'));
+        message.channel.send(Util.Embed(message.member).setTitle('Failed to fetch info from wiki!'));
     } 
 }
 

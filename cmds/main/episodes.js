@@ -38,7 +38,7 @@ export async function run(message, args) {
         let am_pm = (H < 12 || H === 24) ? ' AM' : ' PM';
         timeString = h + ':' + timeString.split(':')[1] + am_pm;
         
-        const embed = Util.Embed()
+        const embed = Util.Embed(message.member)
         .setTitle(`${show.title} ${body.season}x${Util.normalize(body.number)} - ${body.name}`)
         .setDescription(sp + desc + sp + `\n\nAirdate: \`${moment(airdate).isValid() ? airdate.toDateString() : 'No Airdate Available'}\`\nAirtime: \`${body.airtime === '' ? 'No Airtime Available' : timeString + ' ET'}\`\nRuntime: \`${body.runtime} Minutes\`\nChannel: \`${show.channel}\`\n\n**[Full recap & trailer](${body.url} '${body.url}')**` + process.logos)
         .setImage(img);

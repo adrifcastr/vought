@@ -7,7 +7,7 @@ export async function run(message) {
    const body = await Util.fetchJSON('https://gideonbot.com/api/trivia/theboys').catch(ex => Util.log(ex));
    const trivia = body[Math.floor(Math.random() * body.length)];
 
-   const embed = Util.Embed()
+   const embed = Util.Embed(message.member)
    .setDescription('**' + trivia.trivia + '**' + process.logos)
    .setThumbnail('https://posterspy.com/wp-content/uploads/2020/07/closeboys-1500x1500.png')
 

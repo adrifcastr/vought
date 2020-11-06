@@ -7,7 +7,7 @@ export async function run(message) {
    const body = await Util.fetchJSON('https://gideonbot.com/api/quotes/theboys').catch(ex => Util.log(ex));
    const quote = body[Math.floor(Math.random() * body.length)];
 
-   const embed = Util.Embed()
+   const embed = Util.Embed(message.member)
    .setDescription('**' + quote.quote + '\n\n~' + quote.author + '**' + process.logos)
    .setThumbnail(quote.img)
 

@@ -41,7 +41,7 @@ class Util {
         imgclient.album.get(imgid, (err, res) => {
             if (err) {
                 Util.log(err);
-                return message.channel.send(Util.Embed().setTitle('An error occurred, please try again later!'));
+                return message.channel.send(Util.Embed(message.member).setTitle('An error occurred, please try again later!'));
             }
     
             let min = 0;
@@ -49,7 +49,7 @@ class Util {
             let ranum = Math.floor(Math.random() * (max - min + 1)) + min;
             let rimg = res.images[ranum].link;
 
-            message.channel.send(Util.Embed().setImage(rimg));
+            message.channel.send(Util.Embed(message.member).setImage(rimg));
         });
     }
 
@@ -192,10 +192,14 @@ class Util {
         };
     }
 
-    static Embed() {
+    static Embed(member) {
         const embed = new Discord.MessageEmbed();
-        embed.setColor('DARK_NAVY');
-        embed.setFooter(Util.config.footer, Util.config.avatar);
+        if (member.id === '347545727280611328') embed.setAuthor('Respect Buff', member.user.displayAvatarURL());
+        if (member.id === '347545727280611328') embed.setColor('#1C8C4C');
+        else embed.setColor('DARK_NAVY');
+        if (member.id === '347545727280611328') embed.addField(`<:buff:774348830338187265>\`${member.user.tag}\` you're awesome!<:buff:774348830338187265>`, member.premiumSince ? `<:boost:678746359549132812>Nitro boosting The Boys since \`${member.premiumSince.toDateString()}\`<:boost:678746359549132812>` : '\u200B');
+        if (member.id === '347545727280611328') embed.setFooter(Util.config.footer, member.user.displayAvatarURL());
+        else embed.setFooter(Util.config.footer, Util.config.avatar);
 
         return embed;
     }

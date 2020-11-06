@@ -67,7 +67,7 @@ export async function run(message) {
             };
         }
 
-        const embed = Util.Embed().setTitle('__Upcoming The Boys episodes:__')
+        const embed = Util.Embed(message.member).setTitle('__Upcoming The Boys episodes:__')
         embed.addField(`${obj.series_name} ${obj.embed.name}`, `${obj.embed.value()}`)
         message.channel.send(embed);
     }

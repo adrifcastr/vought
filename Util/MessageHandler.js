@@ -119,12 +119,12 @@ class MsgHandler {
         }
 
         if (command.help.args.force) {
-            const noinput = Util.Embed().setTitle('You must supply valid input!');
-            const nomention = Util.Embed().setTitle('You must supply a valid mention!');
-            const nomember = Util.Embed().setTitle('You must supply a valid mention or ID!');
-            const noid =  Util.Embed().setTitle('You must supply a valid ID!');
-            const noepisode = Util.Embed().setTitle('You must supply a valid episode and season!').setDescription('Acceptable formats: S00E00, 00x00 and 000' + process.logos);
-            const nonum = Util.Embed().setTitle('You must supply a valid number!');
+            const noinput = Util.Embed(message.member).setTitle('You must supply valid input!');
+            const nomention = Util.Embed(message.member).setTitle('You must supply a valid mention!');
+            const nomember = Util.Embed(message.member).setTitle('You must supply a valid mention or ID!');
+            const noid =  Util.Embed(message.member).setTitle('You must supply a valid ID!');
+            const noepisode = Util.Embed(message.member).setTitle('You must supply a valid episode and season!').setDescription('Acceptable formats: S00E00, 00x00 and 000' + process.logos);
+            const nonum = Util.Embed(message.member).setTitle('You must supply a valid number!');
 
             if (!args.length) return message.channel.send(noinput);
 

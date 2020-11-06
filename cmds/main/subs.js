@@ -8,7 +8,7 @@ import Util from '../../Util.js';
 export async function run(message, args) {
     if (!process.env.OPS_UA || !process.env.OPS_USER || !process.env.OPS_PASS) {
         Util.log('Missing env variables for subs command!');
-        return message.channel.send(Util.Embed().setTitle('This command is currently not available'));
+        return message.channel.send(Util.Embed(message.member).setTitle('This command is currently not available'));
     }
 
     const OS = new OpenSubtitles({
@@ -18,14 +18,14 @@ export async function run(message, args) {
         ssl: true
     });
 
-    if (!args[0]) return message.channel.send(Util.Embed().setTitle('You must supply a lang code, a season and its episode number!')
+    if (!args[0]) return message.channel.send(Util.Embed(message.member).setTitle('You must supply a lang code, a season and its episode number!')
         .setDescription('You can find ISO 639-2 codes [here](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes \'https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes\')!' + process.logos));
 
-    if (args[0].length !== 3) return message.channel.sendUtil.Embed().setTitle('You must supply a valid ISO 639-2 code!')
+    if (args[0].length !== 3) return message.channel.sendUtil.Embed(message.member).setTitle('You must supply a valid ISO 639-2 code!')
        .setDescription('[ISO 639-2 codes](https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes \'https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes\')' + process.logos);
 
     let seasonAndEpisode = Util.parseSeriesEpisodeString(args[1]);
-    if (!seasonAndEpisode) return message.channel.send(Util.Embed().setTitle('You must supply a valid episode and season!').setDescription('Acceptable formats: S00E00, 00x00 and 000' + process.logos));
+    if (!seasonAndEpisode) return message.channel.send(Util.Embed(message.member).setTitle('You must supply a valid episode and season!').setDescription('Acceptable formats: S00E00, 00x00 and 000' + process.logos));
 
     const show = {
         id: 'tt1190634',
@@ -42,7 +42,7 @@ export async function run(message, args) {
         imdbid: show.id,           
 
     }).then(subtitles => {
-        const embed = Util.Embed().setTitle(`Subtitles for: ${show.title} ${seasonAndEpisode.season}x${seasonAndEpisode.episode}`)
+        const embed = Util.Embed(message.member).setTitle(`Subtitles for: ${show.title} ${seasonAndEpisode.season}x${seasonAndEpisode.episode}`)
         .setDescription('Here are the best results from opensubtitles.org:' + process.logos);
 
         for (let sub of Object.values(subtitles)[0]) {

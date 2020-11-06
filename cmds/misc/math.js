@@ -10,7 +10,7 @@ export async function run(message, args) {
         message.channel.send(result, { code: true });
     }
      catch (e) {
-    return message.channel.send(Util.Embed().setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
+    return message.channel.send(Util.Embed(message.member).setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
     }
 }
 
