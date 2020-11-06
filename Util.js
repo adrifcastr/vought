@@ -197,7 +197,7 @@ class Util {
         if (member.id === '347545727280611328') embed.setAuthor('Respect Buff', member.user.displayAvatarURL());
         if (member.id === '347545727280611328') embed.setColor('#1C8C4C');
         else embed.setColor('DARK_NAVY');
-        if (member.id === '347545727280611328') embed.addField(`<:buff:774348830338187265>\`${member.user.tag}\` you're awesome!<:buff:774348830338187265>`, member.premiumSince ? `<:boost:678746359549132812>Nitro boosting The Boys since \`${member.premiumSince.toDateString()}\`<:boost:678746359549132812>` : '\u200B');
+        if (member.id === '347545727280611328') embed.addField(`<:buff:774348830338187265>\`${member.user.tag}\` you're awesome!<:buff:774348830338187265>`, member.premiumSince ? `<:boost:678746359549132812>Boosting The Boys since \`${member.premiumSince.toDateString()}\`<:boost:678746359549132812>` : '\u200B');
         if (member.id === '347545727280611328') embed.setFooter(Util.config.footer, member.user.displayAvatarURL());
         else embed.setFooter(Util.config.footer, Util.config.avatar);
 
