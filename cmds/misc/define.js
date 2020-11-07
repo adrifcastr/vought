@@ -14,7 +14,6 @@ export async function run(message, args) {
     const embed = Util.Embed(message.member)
     .setTitle(result.list[0].word)
     .setURL(result.list[0].permalink)
-    .setAuthor('by ' + result.list[0].author, 'https://play-lh.googleusercontent.com/unQjigibyJQvru9rcCOX7UCqyByuf5-h_tLpA-9fYH93uqrRAnZ0J2IummiejMMhi5Ch')
     .setThumbnail('https://miro.medium.com/max/4000/1*ctUugc4pAxlLweBOxzySLg.png')
     .addField('Definition:', Util.truncate(def, 1000, true))
     .addField('Example:', '_' + Util.truncate(ex, 1000, true) + '_')
