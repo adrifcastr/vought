@@ -41,6 +41,7 @@ process.on('uncaughtException', err => {
     Util.log('Uncaught Exception: ' + `\`\`\`\n${err.stack}\n\`\`\``);
 });
 
+
 process.on('unhandledRejection', err => {
     const ignore = [
         Discord.Constants.APIErrors.MISSING_PERMISSIONS,
