@@ -22,7 +22,8 @@
     "node-fetch": "^2.6.0",
     "opensubtitles-api": "^5.1.2",
     "pretty-error": "^2.1.1",
-    "recursive-readdir": "^2.2.2"
+    "recursive-readdir": "^2.2.2",
+    "urban-dictionary-client": "^3.0.1"
   },
   "devDependencies": {
     "node-gyp-build": "^4.2.3"
