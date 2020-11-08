@@ -5,17 +5,12 @@ import math from 'mathjs';
  * @param {Discord.Message} message
  */
 export async function run(message, args) {
-    try {
-        const result = math.evaluate(args.join(' '));
-        message.channel.send(result, { code: true });
-    }
-     catch (e) {
-    return message.channel.send(Util.Embed(message.member).setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
-    }
+    const result = math.evaluate(args.join(' '));
+    return message.channel.send(result, { code: true });
 }
 
 export const help = {
-    name: ['math', 'calc'],
+    name: 'math',
     type: 'misc',
     help_text: 'math <expression>',
     help_desc: 'Do some math',

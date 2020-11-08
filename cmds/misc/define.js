@@ -18,11 +18,11 @@ export async function run(message, args) {
     .addField('Definition:', Util.truncate(def, 1000, true))
     .addField('Example:', '_' + Util.truncate(ex, 1000, true) + '_')
 
-    message.channel.send(embed);
+    return message.channel.send(embed);
 }
 
 export const help = {
-    name: ['define', 'def'],
+    name: 'define',
     type: 'misc',
     help_text: 'define <term>',
     help_desc: 'Define terms on urban dic',

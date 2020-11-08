@@ -2,7 +2,7 @@
  * @param {Discord.Message} message
  */
 export async function run(message) {     
-    message.channel.send('https://discord.gg/m55BG9d'); 
+    return message.channel.send('https://discord.gg/m55BG9d'); 
 }
 
 export const help = {

@@ -156,11 +156,11 @@ class MsgHandler {
         }
 
         try {
-            command.run(message, args);
+            await command.run(message, args);
         }
         catch (e) {
             return message.channel.send(Util.Embed(message.member).setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
-        }
+        } 
     }
 }
 

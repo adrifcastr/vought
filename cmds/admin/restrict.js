@@ -14,12 +14,12 @@ export async function run(message, args) {
 
     if (member.roles.cache.has('768904238629388328')) {
         await member.roles.remove('768904238629388328').catch(ex => Util.log(ex));
-        message.reply(member + 'has been restricted from further usage!:white_check_mark:');
+        return message.reply(member + 'has been restricted from further usage!:white_check_mark:');
     }
 
     if (!member.roles.cache.has('768904238629388328')) {
         await member.roles.add('768904238629388328').catch(ex => Util.log(ex));
-        message.reply(member + 'has been unrestricted from usage!:white_check_mark:');
+        return message.reply(member + 'has been unrestricted from usage!:white_check_mark:');
     }
 }
 

@@ -18,13 +18,13 @@ export async function run(message) {
         gif: 'https://cdn.discordapp.com/attachments/715564004621418577/773261622730948648/16044303213819221192278806689065.gif'
     };
 
-    message.channel.send(Util.Embed(message.member)
+    return message.channel.send(Util.Embed(message.member)
     .setDescription(`**${boom.emote}${auth} ${boom.text}${boom.emote}**\n\n${boom.desc}` + process.logos)
     .setImage(boom.gif));
 }
 
 export const help = {
-    name: ['boom'],
+    name: 'boom',
     type: 'fun',
     help_text: 'boom <user>',
     help_desc: 'Explode someones head',

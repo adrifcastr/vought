@@ -145,7 +145,7 @@ export async function run(message, args) {
             embed.addField('.' + item + ` ${marks[item].emotes.join('')}${marks[item].roles.length > 0 ? '`' + marks[item].roles.join(' ') + '`' : ''}`, commands[item].help_desc);
         }
         embed.addField('Feature suggestions:', '[Send them here](https://discordapp.com/channels/604160368490577930/604451093044527190 \'#suggestions\')')
-        message.channel.send(embed);
+        return message.channel.send(embed);
     }
 }   
 

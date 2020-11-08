@@ -11,7 +11,7 @@ export async function run(message) {
    .setDescription('**' + quote.quote + '\n\n~' + quote.author + '**' + process.logos)
    .setThumbnail(quote.img)
 
-   message.channel.send(embed);
+   return message.channel.send(embed);
 }
 
 export const help = {

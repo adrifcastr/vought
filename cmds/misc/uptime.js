@@ -4,7 +4,7 @@ import Util from '../../Util.js';
  * @param {Discord.Message} message
  */
 export async function run(message) {
-    message.channel.send(Util.Embed(message.member).setTitle('Uptime:').setDescription(Util.secondsToDifferenceString(process.vought.uptime / 1000, { enableSeconds: true } ) + process.logos));
+    return message.channel.send(Util.Embed(message.member).setTitle('Uptime:').setDescription(Util.secondsToDifferenceString(process.vought.uptime / 1000, { enableSeconds: true } ) + process.logos));
 }
 
 export const help = {

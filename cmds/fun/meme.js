@@ -4,7 +4,7 @@ import Util from '../../Util.js';
  * @param {Discord.Message} message
  */
 export async function run(message) {
-   Util.IMG('uellKvP', message);
+   return Util.IMG('uellKvP', message);
 }
 
 export const help = {

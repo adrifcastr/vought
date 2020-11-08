@@ -258,10 +258,7 @@ class Util {
     
                     let props = await import(`./${file_path}`);
                     
-                    if (Array.isArray(props.help.name)) {
-                        for (let item of props.help.name) process.vought.commands.set(item, props);
-                    }
-                    else process.vought.commands.set(props.help.name, props);
+                    process.vought.commands.set(props.help.name, props);
             
                     let cmd_end = process.hrtime.bigint();
                     let took = (cmd_end - cmd_start) / BigInt('1000000');

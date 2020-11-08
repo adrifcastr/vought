@@ -28,11 +28,11 @@ export async function run(message, args) {
     ctx.fillText(split[1].trim(), canvas.width / 40.0, canvas.height / 4.5);
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'tbmeme.jpg');
-    message.channel.send(Util.Embed(message.member).attachFiles(attachment).setImage('attachment://tbmeme.jpg'));
+    return message.channel.send(Util.Embed(message.member).attachFiles(attachment).setImage('attachment://tbmeme.jpg'));
 }
 
 export const help = {
-    name: ['cm', 'creatememe'],
+    name: 'cm',
     type: 'fun',
     help_text: 'cm <phrase1, phrase2>',
     help_desc: 'Creates a custom meme',

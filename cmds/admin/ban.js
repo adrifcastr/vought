@@ -33,7 +33,7 @@ export async function run(message, args) {
     .setImage('https://media.discordapp.net/attachments/715564004621418577/769212118464725002/Homelander_2.gif')
 
     const ban = await message.guild.members.ban(member, { days: 7, reason: reason ? reason : null }).catch();
-    if (ban) message.channel.send(embed); 
+    if (ban) return message.channel.send(embed); 
     else return message.channel.send('Couldn\'t ban this user. Please make sure that my role is higher then theirs and that they\'re not the guild owner.\nOtherwise Discord was unable to globally resolve the user.');
 }
 

@@ -8,11 +8,11 @@ export async function run(message) {
     .setTitle('Gag Reels:')
     .setDescription('[The Boys Season 1 - Gag Reel](https://www.youtube.com/watch?v=SH2HzjuBLfA)\n[The Boys Season 2 - Gag Reel](https://www.youtube.com/watch?v=DkxFko8NV6Q)' + process.logos)
 
-    message.channel.send(embed);
+    return message.channel.send(embed);
 }
 
 export const help = {
-    name: ['gagreel', 'outtakes', 'bloopers'],
+    name: 'gagreel',
     type: 'main',
     help_text: 'gagreel',
     help_desc: 'Watch the shows\' gag reels',

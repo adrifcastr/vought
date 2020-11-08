@@ -11,7 +11,7 @@ export async function run(message) {
    .setDescription('**' + trivia.trivia + '**' + process.logos)
    .setThumbnail('https://posterspy.com/wp-content/uploads/2020/07/closeboys-1500x1500.png')
 
-   message.channel.send(embed);
+   return message.channel.send(embed);
 }
 
 export const help = {

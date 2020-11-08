@@ -9,11 +9,11 @@ export async function run(message) {
     .addField('adrifcastr', 'Development & Hosting')
     .addField('Donate:', '[PayPal](https://paypal.me/adrifcastr)')
 
-    message.channel.send(embed);
+    return message.channel.send(embed);
 }
 
 export const help = {
-    name: ['credits', 'credit'],
+    name: 'credits',
     type: 'misc',
     help_text: 'credits',
     help_desc: 'Development credits',
