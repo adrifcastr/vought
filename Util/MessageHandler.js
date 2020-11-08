@@ -159,6 +159,7 @@ class MsgHandler {
             await command.run(message, args);
         }
         catch (e) {
+            Util.log(`An error occurred while running ${command.help.name}:\n\n\`\`\`\n${e.stack}\n\`\`\``)
             return message.channel.send(Util.Embed(message.member).setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
         } 
     }
