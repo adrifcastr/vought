@@ -9,6 +9,7 @@ const vought = new Discord.Client({
         intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_PRESENCES', 'GUILD_MESSAGE_REACTIONS', 'DIRECT_MESSAGES']
     },
     allowedMentions: { parse: ['users', 'roles'] },
+    partials: ['MESSAGE'],
     restRequestTimeout: 25000
 });
 
@@ -64,6 +65,11 @@ vought.on('error', err => {
 vought.on('message', message => {
     Util.MsgHandler.Handle(message, Util);
     Util.Restart(message);
+});
+
+vought.on('messageUpdate', async (oldMessage, newMessage) => {
+    if (newMessage.partial) await newMessage.fetch();
+    if (newMessage.editedAt) Util.MsgHandler.Handle(newMessage, Util);
 });
 
 vought.on('shardReady', async (id, unavailableGuilds) => {
