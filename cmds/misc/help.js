@@ -9,6 +9,7 @@ export async function run(message, args) {
     const _prefixes = Util.config.prefixes.filter((x, i) => i < Util.config.prefixes.length - 1); //we remove the last prefix (.pop modifies the original array - BAD!)
     const prefixes = _prefixes.map(x => (Util.getIdFromString(x) == process.vought.user.id ? '' : '`') + x + (Util.getIdFromString(x) == process.vought.user.id ? '' : '`')).join(' | ');
     const cmdamount = Array.from(new Set(process.vought.commands.map(x=>JSON.stringify(x)))).map(x=>JSON.parse(x));
+    const dev = await message.guild.members.fetch('224617799434108928');
 
     if (!args[0]) {
         const help = Util.Embed(message.member)
@@ -21,6 +22,7 @@ export async function run(message, args) {
             .addField('misc (`'+ cmdamount.filter(x => x.help.type === 'misc').length + ' available`)', 'Miscellaneous commands')    
             .addField('Total amount:', `\`${cmdamount.length}\` commands available`)   
             .addField('Feature suggestions:', '[Send them here](https://discordapp.com/channels/604160368490577930/604451093044527190 \'#suggestions\')')
+            .addField('Order your own custom Discord Bot', 'Contact `' + dev.user.tag + '` or [click here](https://discord.gg/kdysUQR).');
 
         return message.channel.send(help);
     }
@@ -30,6 +32,7 @@ export async function run(message, args) {
         .setTitle('__Command Syntax:__')
         .setDescription('My prefixes are: ' + prefixes + '\nArguments wrapped in `<>` are variables. _do not actually add brackets_\nArguments seperated by `/` mean `this or(/) this`.\nArguments wrapped in `[]` are optional arguments.\nCommands marked with :warning: are potentially dangerous.\nCommands marked with :shield: require certain permissions.\nCommands marked with `@role` require the mentioned role.')
         .addField('Feature suggestions:', '[Send them here](https://discordapp.com/channels/604160368490577930/604451093044527190 \'#suggestions\')')
+        .addField('Order your own custom Discord Bot', 'Contact `' + dev.user.tag + '` or [click here](https://discord.gg/kdysUQR).');
 
         return message.channel.send(help);
     }
@@ -95,6 +98,7 @@ export async function run(message, args) {
                 
                 embed.addField('.' + item + ` ${marks[item].emotes.join('')}${marks[item].roles.length > 0 ? '`' + marks[item].roles.join(' ') + '`' : ''}`, commands[item].help_desc);
                 embed.addField('Feature suggestions:', '[Send them here](https://discordapp.com/channels/604160368490577930/604451093044527190 \'#suggestions\')')
+                embed.addField('Order your own custom Discord Bot', 'Contact `' + dev.user.tag + '` or [click here](https://discord.gg/kdysUQR).');
             }
             pages.push(embed);
         }
@@ -145,6 +149,7 @@ export async function run(message, args) {
             embed.addField('.' + item + ` ${marks[item].emotes.join('')}${marks[item].roles.length > 0 ? '`' + marks[item].roles.join(' ') + '`' : ''}`, commands[item].help_desc);
         }
         embed.addField('Feature suggestions:', '[Send them here](https://discordapp.com/channels/604160368490577930/604451093044527190 \'#suggestions\')')
+        embed.addField('Order your own custom Discord Bot', 'Contact `' + dev.user.tag + '` or [click here](https://discord.gg/kdysUQR).');
         return message.channel.send(embed);
     }
 }   

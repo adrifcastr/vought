@@ -1,5 +1,3 @@
-import Util from '../../Util.js';
-
 /**
  * @param {Discord.Message} message
  */
