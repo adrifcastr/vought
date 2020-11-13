@@ -47,5 +47,16 @@ class Checks {
         await member.roles.add(role).catch(ex => Util.log(ex));
         message.reply('You have been verified and gained access to the guild!').catch(ex => Util.log(ex));
     }
+
+    /**
+     * Ignore commands from blacklisted users
+     * @param {Discord.Message} message 
+     * @returns {boolean}
+     */
+    static IBU(message) {
+        const ubl = process.vought.getUser.get(message.author.id);
+        if (!ubl || !ubl.blacklist) return;
+        return ubl.blacklist === 1;
+    }
 }
 export default Checks;

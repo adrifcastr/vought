@@ -1,8 +1,11 @@
 import Discord from "discord.js";
-import MsgHandler from './Util/MessageHandler'
+import MsgHandler from '../Util/MessageHandler'
+import SQL from './Util/SQL'
+import BetterSqlite3 from "better-sqlite3";
 
 export const config: Config;
 export const MsgHandler: Handler;
+export let SQL: Database;
 export function delay(num: number): Promise<void>;
 export function LoadCommands(): Promise<void>;
 export function fetchJSON(url: string): Promise<object>;
@@ -20,6 +23,9 @@ declare module "discord.js" {
     interface Client {
         commands: Discord.Collection<string, Command>;
         owner: string;
+        getUser: BetterSqlite3.Statement<any[]>;
+        setUser: BetterSqlite3.Statement<any[]>;
+        db: BetterSqlite3.Database;
     }
 }
 

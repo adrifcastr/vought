@@ -20,7 +20,7 @@ class MsgHandler {
         if (!message.channel.permissionsFor(message.guild.me).has('SEND_MESSAGES')) return;
 
         if (!message.member) await message.member.fetch();
-        if (message.member.roles.cache.has('768904238629388328')) return;
+        if (Util.Checks.IBU(message)) return; //check if user is blacklisted, if yes, return
         
         const lowercaseContent = message.content.toLowerCase();
 
