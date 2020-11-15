@@ -81,30 +81,68 @@ export async function run(message, args) {
                         allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'],
                     }];
 
-                    const femalemods = [];
-                    const malemods = [];
+                    let mentions = [];
 
-                    if (switches.gender === 'f') {
-                        for (const id of femalemods) {
-                            perms.push({id: id, allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'] });
+                    const mods = { 
+                        types: { 
+                            three: {
+                                femalemods: ['594648975408103424', '231789484448940033'],
+                                malemods: ['347545727280611328']
+                            },
+                            other: {
+                                femalemods: ['594648975408103424', '231789484448940033', '543171568436772894'],
+                                malemods: ['347545727280611328', '188108321318895616', '707501191915110541', '195668298917085185', '480391726805155841']
+                            }
+                        } 
+                    };
+
+                    if (switches.severity === '3') {
+                        if (switches.gender === 'f') {
+                            for (const id of mods.types.three.femalemods) {
+                                perms.push({id: id, allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'] });
+                                mentions.push(id);
+                            }
                         }
-                    }
-                    else if (switches.gender === 'm') {
-                        for (const id of malemods) {
-                            perms.push({id: id, allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'] });
+                        else if (switches.gender === 'm') {
+                            for (const id of mods.types.three.malemods) {
+                                perms.push({id: id, allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'] });
+                                mentions.push(id);
+                            }
+                        }
+                        else {
+                            const all = mods.types.three.femalemods.concat(mods.types.three.malemods);
+                            for (const id of all) {
+                                perms.push({id: id, allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'] });
+                                mentions.push(id);
+                            }
                         }
                     }
                     else {
-                        const all = femalemods.concat(malemods);
-                        for (const id of all) {
-                            perms.push({id: id, allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'] });
+                        if (switches.gender === 'f') {
+                            for (const id of mods.types.other.femalemods) {
+                                perms.push({id: id, allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'] });
+                                mentions.push(id);
+                            }
+                        }
+                        else if (switches.gender === 'm') {
+                            for (const id of mods.types.other.malemods) {
+                                perms.push({id: id, allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'] });
+                                mentions.push(id);
+                            }
+                        }
+                        else {
+                            const all = mods.types.other.concat(mods.types.other.malemods);
+                            for (const id of all) {
+                                perms.push({id: id, allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'] });
+                                mentions.push(id);
+                            }
                         }
                     }
                     
                     const ticket = await message.guild.channels.create(`ticket-${message.author.discriminator}`, { parent: '777220934359580692', permissionOverwrites: perms, rateLimitPerUser: 5 });
                     const tikmsg = await ticket.send(message.author.toString() + ' please wait here for a moderator to respond to your ticket.\n\nPlease be aware that moderators with the `ADMINISTRATOR` flag set can lurk into this channel regardless of the gender you specified while creating the ticket.\nIf you feel uncomfortable with this, please ask the operating moderator to close this ticket and resolve your issue via DM.\n\nYour slowmode is set to `5` seconds to prevent spam.');
                     await initialmsg.edit(Util.Embed(message.member).setTitle('Support Ticket for ' + message.author.tag).setDescription(`Your support ticket \`${title}\` has been created successfully.\nPlease [wait here](${tikmsg.url}) for a moderator to assist you.\n\n_Note: abusing support tickets will result in removal from this guild._`)); 
-                    message.guild.channels.cache.get('772873456068722739').send(Util.Embed(message.member).setTitle('New Support Ticket:').setDescription(`Ticket: \`${title}\`\nOpened by: \`${message.author.tag}\`\nSeverity: \`${switches.severity === '1' ? 'Type 1 (General issue)' : switches.severity === '2' ? 'Type 2 (Issue with one or more members)' : 'Type 3 (Issue with one or more moderators)'}\`\nGender preference: ${switches.gender === 'f' ? '♀️' : switches.gender === 'm' ? '♂️' : '🚻'}\n\nOne moderator who meets the criteria please [respond to this ticket](${tikmsg.url}).`));
+                    message.guild.channels.cache.get('772873456068722739').send(mentions.map(x => `<@${x}>`).join(' '), { embed: Util.Embed(message.member).setTitle('New Support Ticket:').setDescription(`Ticket: \`${title}\`\nOpened by: \`${message.author.tag}\`\nSeverity: \`${switches.severity === '1' ? 'Type 1 (General issue)' : switches.severity === '2' ? 'Type 2 (Issue with one or more members)' : 'Type 3 (Issue with one or more moderators)'}\`\nGender preference: ${switches.gender === 'f' ? '♀️' : switches.gender === 'm' ? '♂️' : '🚻'}\n\nOne of the mentioned moderators please [respond to this ticket](${tikmsg.url}).`) });
                 }
             });
         }

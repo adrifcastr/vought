@@ -29,7 +29,7 @@ vought.once('ready', async () => {
     const app = await vought.fetchApplication().catch(ex => Util.log(ex));
 
     if (app && app.owner) vought.owner = app.owner.ownerID ? app.owner.ownerID : app.owner.id;
-
+  
     setInterval(Util.InitStatus, 20e3);
     Util.SQL.InitDB();
     await Util.LoadCommands();
