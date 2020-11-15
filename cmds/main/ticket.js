@@ -131,7 +131,7 @@ export async function run(message, args) {
                             }
                         }
                         else {
-                            const all = mods.types.other.concat(mods.types.other.malemods);
+                            const all = mods.types.other.femalemods.concat(mods.types.other.malemods);
                             for (const id of all) {
                                 perms.push({id: id, allow: ['VIEW_CHANNEL', 'SEND_MESSAGES'] });
                                 mentions.push(id);
