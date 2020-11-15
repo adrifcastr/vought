@@ -8,7 +8,7 @@ export async function run(message) {
     const filter = m => message.author.id === m.author.id;
 
     if (message.mentions.channels.first()) {
-        if (message.mentions.channels.first().parent.id !== '777105475043852288') return message.reply('the mentioned channel is not a support ticket!');
+        if (message.mentions.channels.first().parent.id !== '777220934359580692') return message.reply('the mentioned channel is not a support ticket!');
         else {
             const tik = message.mentions.channels.first().name;
             await message.channel.send(`Do you really want to close \`${tik}\`? [y/n]`);
@@ -28,7 +28,7 @@ export async function run(message) {
         } 
     }  
     else { 
-        if (message.channel.parent.id !== '777105475043852288') return message.reply('this channel is not a support ticket!');
+        if (message.channel.parent.id !== '777220934359580692') return message.reply('this channel is not a support ticket!');
         else { 
             const tik = message.channel.name;
             await message.channel.send(`Do you really want to close \`${tik}\`? [y/n]`);
