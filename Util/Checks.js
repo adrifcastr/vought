@@ -58,5 +58,19 @@ class Checks {
         if (!ubl || !ubl.blacklist) return;
         return ubl.blacklist === 1;
     }
+
+    /**
+     * Check for blacklisted mentions 
+     * @param {Discord.Message} message
+     */
+    static BadMention(message) {
+        const mention = message.mentions.users.first();
+        if (mention) {
+            const badmention = process.vought.getUser.get(mention.id);
+            if (badmention && badmention.blacklist === 1) return true;
+            else return null;
+        }
+        else return null;
+    }
 }
 export default Checks;
