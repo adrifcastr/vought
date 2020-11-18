@@ -8,8 +8,8 @@ import Util from '../../Util.js';
  */
 export async function run(message, args) {
     const text = Discord.Util.cleanContent(args.join(' '), message);
-    if (!text.includes(',')) return message.reply('you need to seperate two phrases with one comma!');
-    if (text.length < 2) return message.reply('you need to provide actual input!');
+    if (!text.includes(',')) return message.reply('You need to seperate two phrases with one comma!');
+    if (text.length < 2) return message.reply('You need to provide actual input!');
     const split = text.split(',');
 
     const canvas = Canvas.createCanvas(683, 487);

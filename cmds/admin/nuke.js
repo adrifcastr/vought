@@ -5,7 +5,7 @@ export async function run(message) {
     if (message.mentions.channels.first()) {
         await message.mentions.channels.first().clone({ parent: message.mentions.channels.first().parent.id });
         await message.mentions.channels.first().delete();
-        return message.reply('nuke successful.');
+        return message.reply('Nuke successful.');
     }
     else {
         await message.channel.clone({ parent: message.channel.parent.id });

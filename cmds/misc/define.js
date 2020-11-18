@@ -6,7 +6,7 @@ import search from 'urban-dictionary-client';
  */
 export async function run(message, args) {
     const result = await search.search(args.join(' '));
-    if (!result.list.length) return message.reply('there was no result for `' + args.join(' ') + '` on Urban Dictionary.\nYou can submit words here: https://www.urbandictionary.com/add.php').then(m => m.suppressEmbeds(true));
+    if (!result.list.length) return message.reply('There was no result for `' + args.join(' ') + '` on Urban Dictionary.\nYou can submit words here: https://www.urbandictionary.com/add.php').then(m => m.suppressEmbeds(true));
 
     const def = result.list[0].definition.replace(/(?:\[)/g, '').replace(/(?:\])/g, '');
     const ex = result.list[0].example.replace(/(?:\[)/g, '').replace(/(?:\])/g, '');

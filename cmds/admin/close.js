@@ -8,7 +8,7 @@ export async function run(message) {
     const filter = m => message.author.id === m.author.id;
 
     if (message.mentions.channels.first()) {
-        if (message.mentions.channels.first().parent.id !== '777220934359580692') return message.reply('the mentioned channel is not a support ticket!');
+        if (message.mentions.channels.first().parent.id !== '777220934359580692') return message.reply('The mentioned channel is not a support ticket!');
         else {
             const tik = message.mentions.channels.first().name;
             await message.channel.send(`Do you really want to close \`${tik}\`? [y/n]`);
@@ -16,19 +16,19 @@ export async function run(message) {
             .then(async messages => {
                 if (messages.first().content.match(/(?:y)/i)) {
                     await message.mentions.channels.first().delete();
-                    return message.reply(`successfully closed \`${tik}\`!`);
+                    return message.reply(`Successfully closed \`${tik}\`!`);
                 }
                 else if (messages.first().content.match(/(?:n)/i)) {
-                    return message.reply(`command cancelled!`);
+                    return message.reply(`Command cancelled!`);
                 }
             })
             .catch(() => {
-                return message.reply('you ran out of time!');
+                return message.reply('You ran out of time!');
             });
         } 
     }  
     else { 
-        if (message.channel.parent.id !== '777220934359580692') return message.reply('this channel is not a support ticket!');
+        if (message.channel.parent.id !== '777220934359580692') return message.reply('This channel is not a support ticket!');
         else { 
             const tik = message.channel.name;
             await message.channel.send(`Do you really want to close \`${tik}\`? [y/n]`);
@@ -38,11 +38,11 @@ export async function run(message) {
                     return message.channel.delete(); 
                 }
                 else if (messages.first().content.match(/(?:n)/i)) {
-                    return message.reply(`command cancelled!`);
+                    return message.reply(`Command cancelled!`);
                 }
             })
             .catch(() => {
-                return message.reply('you ran out of time!');
+                return message.reply('You ran out of time!');
             });
         }
     } 

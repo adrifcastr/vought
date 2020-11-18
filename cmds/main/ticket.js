@@ -4,8 +4,8 @@ import Util from '../../Util.js';
  * @param {Discord.Message} message
  */
 export async function run(message, args) {
-    if (message.guild.id !== '604160368490577930') return message.reply('this command is not available in this guild!');
-    if (!args[0]) return message.reply('please provide a short concise title when opening a ticket!');
+    if (message.guild.id !== '604160368490577930') return message.reply('This command is not available in this guild!');
+    if (!args[0]) return message.reply('Please provide a short concise title when opening a ticket!');
     const title = args.join(' ');
     const emotes = ['1️⃣', '2️⃣', '3️⃣', '♀️', '♂️', '🚻'];
     let switches = {};

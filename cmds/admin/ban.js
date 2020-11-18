@@ -16,7 +16,7 @@ export async function run(message, args) {
     if (args[1]) reason = args.slice(1).join(' ');
     
     if (typeof member !== 'string') {
-       if (member.id === process.vought.owner) return message.reply('nuh-uh! You know you can\'t do this.');
+       if (member.id === process.vought.owner) return message.reply('Nuh-uh! You know you can\'t do this.');
 
        const dmembed = Util.Embed(message.member)
        .setDescription(`You have been banned by \`${message.author.tag}\`${reason ? ` because of \`${reason}\`` : ''}.` + process.logos)
@@ -25,7 +25,7 @@ export async function run(message, args) {
        await member.send(dmembed).catch();
     }
     else {
-       if (member === process.vought.owner) return message.reply('nuh-uh! You know you can\'t do this.');
+       if (member === process.vought.owner) return message.reply('Nuh-uh! You know you can\'t do this.');
     }
     
     const embed = Util.Embed(message.member)
