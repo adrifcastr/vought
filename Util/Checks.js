@@ -21,9 +21,9 @@ class Checks {
         else if (message.content.match(/(?:everyone)/i) && message.content.match(/(?:get)/i) && message.content.match(/(?:the)/i) && message.content.match(/(?:fuck)/i) && message.content.match(/(?:out)/i)) message.channel.send({ files: ['./data/video/Everyone Get The Fuck Out.mp4'] });
         else if (message.content.match(/(?:begone)/i) && message.content.match(/(?:thot)/i)) {
             if (message.author.id !== '101218104427700224') return;
-            
+
             const messages = await message.channel.messages.fetch({ limit: 10 });
-            const lastmsg = messages.find(x => x.author.id !== message.author.id);
+            const lastmsg = messages.filter(x => !x.author.bot).find(x => x.author.id !== message.author.id);
 
             const canvas = Canvas.createCanvas(989, 677);
             const ctx = canvas.getContext('2d');
