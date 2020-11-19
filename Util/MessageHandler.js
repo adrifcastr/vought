@@ -21,7 +21,7 @@ class MsgHandler {
 
         if (!message.member) await message.member.fetch();
         if (Util.Checks.IBU(message)) return; //check if user is blacklisted, if yes, return
-        if (Util.Checks.BadMention(message)) return message.reply('You cannot perform any actions on a blacklisted user!'); //bad people no, bad people bad
+        if (Util.Checks.BadMention(message)) return; //bad people no, bad people bad
 
         const lowercaseContent = message.content.toLowerCase();
 
