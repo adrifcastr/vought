@@ -18,6 +18,7 @@ export function parseSeriesEpisodeString(str: string): SeasonAndEpisodeInfo;
 export function IMG(image_id: string, message: Discord.Message): Promise<void>;
 export function Restart(message: Discord.Message): Promise<void>;
 export function ValID(input: string): string;
+export function rsreq(method: string, content: object, user: string, key: string): Promise<void>;
 
 declare module "discord.js" {
     interface Client {

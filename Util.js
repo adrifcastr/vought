@@ -7,6 +7,9 @@ import recursive from 'recursive-readdir';
 import path from 'path';
 import Checks from './Util/Checks.js';
 import Imgur from 'imgur-node';
+import crypto from 'crypto';
+import querystring from 'querystring';
+import axios from 'axios';
 
 class Util {
     constructor() {
@@ -222,14 +225,43 @@ class Util {
     }
 
     /**
+     * Send restart web request
+     * @param {String} method
+     * @param {Object} content
+     * @param {String} user
+     * @param {String} key
+     */
+    static async rsreq(method, content = {}, user, key) {
+        let keystr = "";
+        let params = content ?? {};
+        params["_MulticraftAPIMethod"] = method;
+        params["_MulticraftAPIUser"] = user;
+
+        for (let param in params) {
+            if (!params.hasOwnProperty(param)) continue;
+            keystr += param + params[param].toString();
+        }
+
+        let hmac = crypto.createHmac('sha256', key);
+        hmac.update(keystr);
+        let digest = hmac.digest('hex');
+        params["_MulticraftAPIKey"] = digest;
+
+        try {
+            return (await axios.post("https://panel.pebblehost.com/api.php", querystring.stringify(params))).data;
+        } catch (e) {
+            Util.log("API responded with error status " + e.status);
+        }
+    }
+
+    /**
      * Restart server on update
      * @param {Discord.Message} message
      */
     static async Restart(message) {
         if (message.channel.id === '728690738237276243') {
             if (message.content.match(/(?:deploy)/i)) {
-                const requrl = `https://panel.pebblehost.com/api.php?id=142646&_MulticraftAPIMethod=restartServer&_MulticraftAPIUser=adrifcastr%40gmail.com&_MulticraftAPIKey=${process.env.RESTART_KEY}`;
-                await fetch(requrl);
+                await Util.rsreq('restartServer', { id: 142646 }, 'adrifcastr@gmail.com', process.env.RESTART_KEY);
             }
         }
     }
