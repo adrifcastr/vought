@@ -44,6 +44,7 @@ function Log(message) {
 
 git.getLastCommit((err, commit) => {
     if (err) {
+        if (err === 'this does not look like a git repo') return;
         console.log(err);
         Log('Couldn\'t fetch last commit: ' + err);
         return;
