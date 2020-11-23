@@ -63,6 +63,10 @@ vought.on('error', err => {
     Util.log('Bot error: ' + `\`\`\`\n${err.stack}\n\`\`\``);
 });
 
+vought.on('rateLimit', rateLimitInfo => {
+    Util.log('Hit a ratelimit: ' + `\`\`\`\nTimeout: ${rateLimitInfo.timeout} ms\nLimit: ${rateLimitInfo.limit}\nMethod: ${rateLimitInfo.method}\nPath: ${rateLimitInfo.path}\nRoute: ${rateLimitInfo.route}\n\`\`\``);
+});
+
 vought.on('message', message => {
     Util.MsgHandler.Handle(message, Util);
     Util.Restart(message);
