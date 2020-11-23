@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 class MsgHandler {
     constructor() {
         throw new Error('This class cannot be instantiated!');
@@ -10,7 +12,8 @@ class MsgHandler {
     static async Handle(message, Util) {
         if (!message || !message.author || message.partial || message.type != 'DEFAULT') return;
         if (!message.guild) {
-            if (message.content.match(/^\bliberty\b$/i)) Util.Checks.RulesCheck(message, Util);
+            if (moment().isAfter('2020-12-31', 'day')) return;
+            else if (message.content.match(/^\bliberty\b$/i)) Util.Checks.RulesCheck(message, Util);
             return;
         }
         
