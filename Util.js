@@ -259,7 +259,7 @@ class Util {
      * @param {Discord.Message} message
      */
     static async Restart(message) {
-        if (message.channel.id === '728690738237276243') {
+        if (message.channel.id === '780411557892587530') {
             if (message.content.match(/(?:deploy)/i)) {
                 await Util.rsreq('restartServer', { id: 142646 }, 'adrifcastr@gmail.com', process.env.RESTART_KEY);
             }
