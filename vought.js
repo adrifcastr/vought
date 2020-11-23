@@ -90,7 +90,7 @@ vought.on('guildUnavailable', guild => {
     Util.log('The following guild turned unavailable due to a server outage:\n' + guild.id + ' - `' + guild.name + '`');
 });
 
-vought.on('guildMemberAdd', member => {
+vought.on('guildMemberAdd', async member => {
     if (member.guild.id !== '604160368490577930') return;
     if (moment().isAfter('2020-12-31', 'day')) {
         if (member.roles.cache.has('766304492165005323')) return;
