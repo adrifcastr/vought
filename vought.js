@@ -8,7 +8,7 @@ const vought = new Discord.Client({
     ws: {
         intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_PRESENCES', 'GUILD_MESSAGE_REACTIONS', 'DIRECT_MESSAGES']
     },
-    allowedMentions: { parse: ['users', 'roles'] },
+    allowedMentions: { parse: ['users', 'roles'], replied_user: true },
     partials: ['MESSAGE'],
     restRequestTimeout: 25000
 });
