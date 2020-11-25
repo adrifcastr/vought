@@ -3,6 +3,7 @@ import PrettyError from 'pretty-error';
 PrettyError.start().withoutColors();
 import Discord from 'discord.js';
 import Util from './Util.js';
+import moment from 'moment';
 
 const vought = new Discord.Client({
     ws: {
