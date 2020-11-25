@@ -14,7 +14,10 @@ class Checks {
         if (!message.guild) return;
         if (message.editedAt) return;
         if (message.content.match(/(?:#hughlight)/i)) Util.IMG('D9sczOE', message);
-        else if (message.content.match(/(?:anthony)/i) && message.content.match(/(?:starr)/i)) message.reply('**HIS NAME IS __ANTONY__!\nTHERE\'S NO GODDAMN H IN THERE.**');
+        else if (message.content.match(/(?:anthony)/i) && message.content.match(/(?:starr)/i)) {
+            await message.reply('**HIS NAME IS __ANTONY__!\nTHERE\'S NO GODDAMN H IN THERE.**');
+            Util.log(`\`${message.author.tag}\` misspelled Antony. [Jump](${message.url})`);
+        }
         else if (message.content.match(/(?:wish)/i) && message.content.match(/(?:by)/i) && message.content.match(/(?:starlight)/i)) message.channel.send('Presenting Wish™ by Starlight:\n', { files: ['./data/video/Wish by Starlight.mp4'] });
         else if (message.content.match(/(?:deep)/i) && message.content.match(/(?:soy)/i) && message.content.match(/(?:sauce)/i)) message.channel.send('Presenting The Deep\'s Kirei Shoyu Soy Sauce:\n', { files: ['./data/video/Kirei Shoyu The Deep.mp4'] });
         else if (message.content.match(/(?:brave)/i) && message.content.match(/(?:maeve)/i) && message.content.match(/(?:pride)/i) && message.content.match(/(?:bar)/i)) message.channel.send('Brave Maeve Pride Bars. Because you can\'t be proud on an empty stomach.\n', { files: ['./data/video/Brave Maeve Pride Bar.mp4'] });
