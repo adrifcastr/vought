@@ -10,12 +10,12 @@ class Interactions {
      * @param {Discord.Interaction} interaction 
      */
     static async Handle(interaction, Util) {
-        console.log(interaction);
         const args = interaction.data.options;
         const channel = process.vought.channels.cache.get(interaction.channel_id);
 
         //presumably the discord.js interaction object will contain a channel, guild and member object
-        const command = process.vought.slashcommands.get(interaction.id); //currently use this collection
+        const command = process.vought.slashcommands.get(interaction.data.id); //currently use this collection
+        console.log(command);
         if (!command) return;
 
         if (command.help.owner) {

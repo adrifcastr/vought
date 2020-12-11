@@ -14,7 +14,14 @@ export async function run(interaction, args) {
     const returnedValue = eval(code);
 
     if (typeof returnedValue === 'undefined') {
-        channel.send('The evaluated code returned nothing.');
+        process.vought.api.interactions(interaction.id)(interaction.token).callback.post({
+            data: {
+              type: 4,
+              data: {
+                content: 'The evaluated code returned nothing.'
+              }
+            }
+        });
         return;
     }
 
@@ -26,11 +33,18 @@ export async function run(interaction, args) {
 
     if (printValue == '{}') return;
 
-    return channel.send(Util.truncate(printValue, 1900, true), {code: true});
+    return process.vought.api.interactions(interaction.id)(interaction.token).callback.post({
+        data: {
+          type: 4,
+          data: {
+            content: '```\n' + Util.truncate(printValue, 1900, true) + '```\n'
+          }
+        }
+    });
 }
 
 export const help = {
-    id: '786947828009402399',
+    id: '786912791415881739',
     name: 'eval',
     owner: true,
     nsfw: false,
