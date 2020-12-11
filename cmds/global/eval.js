@@ -14,7 +14,7 @@ export async function run(interaction, args) {
     const returnedValue = eval(code);
 
     if (typeof returnedValue === 'undefined') {
-        message.channel.send('The evaluated code returned nothing.');
+        channel.send('The evaluated code returned nothing.');
         return;
     }
 
@@ -33,6 +33,7 @@ export const help = {
     id: '786947828009402399',
     name: 'eval',
     owner: true,
+    nsfw: false,
     roles: [],
     user_perms: [],
     bot_perms: []
