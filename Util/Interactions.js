@@ -14,24 +14,6 @@ class Interactions {
         const args = interaction.data.options;
         const channel = process.vought.channels.cache.get(interaction.channel_id);
 
-        //response for /mbr test command
-        let response;
-
-        if (args[0].value === 'true') response = 'dis is a <a:wumpuskeyboardslam:729404195333079111> [slash command](https://github.com/discord/discord-api-docs/pull/2295) wow';
-        else response = 'dis is a [slash command](https://github.com/discord/discord-api-docs/pull/2295) wow';
-
-        if (interaction.id === '') {
-            process.vought.api.interactions(interaction.id)(interaction.token).callback.post({
-                data: {
-                  type: 4,
-                  data: {
-                    content: response
-                  }
-                }
-            });
-        }
-        //end of response
-
         //presumably the discord.js interaction object will contain a channel, guild and member object
         const command = process.vought.slashcommands.get(interaction.id); //currently use this collection
         if (!command) return;
