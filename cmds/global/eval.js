@@ -44,7 +44,7 @@ export async function run(interaction, args) {
 }
 
 export const help = {
-    id: '786912791415881739',
+    id: '786947828009402399',
     name: 'eval',
     owner: true,
     nsfw: false,
