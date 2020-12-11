@@ -68,6 +68,16 @@ vought.on('rateLimit', rateLimitInfo => {
     Util.log('Hit a ratelimit: ' + `\`\`\`\nTimeout: ${rateLimitInfo.timeout} ms\nLimit: ${rateLimitInfo.limit}\nMethod: ${rateLimitInfo.method}\nPath: ${rateLimitInfo.path}\nRoute: ${rateLimitInfo.route}\n\`\`\``);
 });
 
+vought.ws.on('INTERACTION_CREATE', interaction => {
+    Util.Interactions.Handle(interaction, Util);
+});
+
+/*
+vought.on('interactionCreate', interaction => {
+    Util.Interactions.Handle(interaction, Util);
+});
+*/
+
 vought.on('message', message => {
     Util.MsgHandler.Handle(message, Util);
     Util.Restart(message);

@@ -2,6 +2,7 @@ import Discord from 'discord.js';
 import fetch from 'node-fetch';
 import config from './data/config/config.js';
 import MsgHandler from './Util/MessageHandler.js';
+import Interactions from './Util/Interactions.js';
 import SQL from './Util/SQL.js';
 import recursive from 'recursive-readdir';
 import path from 'path';
@@ -18,6 +19,7 @@ class Util {
 
     static get config() { return config; }
     static get MsgHandler() { return MsgHandler; }
+    static get Interactions() { return Interactions; }
     static get Checks() { return Checks; }
     static get SQL() { return SQL; }
 
