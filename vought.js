@@ -126,6 +126,6 @@ vought.on('guildMemberUpdate', async (oldMember, newMember) => {
     }
 });
 
-vought.on('commandRefused', (message, reason) => {
-    Util.log(`Command Refused:\n\n${message.author.tag} attempted to use \`${message.content}\`\nCommand failed due to: \`${reason}\`\nOrigin: \`#${message.channel.name}\` at \`${message.guild.name}\``);
+vought.on('commandRefused', (interaction, reason) => {
+    Util.log(`Command Refused:\n\n${interaction.member.author.tag} attempted to use \`${interaction.name}\`\nCommand failed due to: \`${reason}\`\nOrigin: \`#${interaction.channel.name}\` at \`${interaction.guild.name}\``);
 });
