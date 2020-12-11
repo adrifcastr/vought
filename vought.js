@@ -19,6 +19,7 @@ process.vought = vought;
 const logos = '\n<a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896>';
 process.logos = logos;
 vought.commands = new Discord.Collection();
+vought.slashcommands = new Discord.Collection();
 
 if (process.env.CLIENT_TOKEN) vought.login(process.env.CLIENT_TOKEN);
 else {

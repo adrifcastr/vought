@@ -60,6 +60,7 @@ interface SeasonAndEpisodeInfo {
 
 interface Command {
     help: {
+        id: string
         name: string | string[];
         type: string;
         help_text: string;

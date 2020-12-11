@@ -20,29 +20,31 @@ class Interactions {
         if (args[0].value === 'true') response = 'dis is a <a:wumpuskeyboardslam:729404195333079111> [slash command](https://github.com/discord/discord-api-docs/pull/2295) wow';
         else response = 'dis is a [slash command](https://github.com/discord/discord-api-docs/pull/2295) wow';
 
-        process.vought.api.interactions(interaction.id)(interaction.token).callback.post({
-            data: {
-              type: 4,
-              data: {
-                content: response
-              }
-            }
-        });
+        if (interaction.id === '') {
+            process.vought.api.interactions(interaction.id)(interaction.token).callback.post({
+                data: {
+                  type: 4,
+                  data: {
+                    content: response
+                  }
+                }
+            });
+        }
         //end of response
 
         //presumably the discord.js interaction object will contain a channel, guild and member object
-        const command = process.vought.commands.get(interaction.id);
+        const command = process.vought.slashcommands.get(interaction.id); //currently use this collection
         if (!command) return;
 
         if (command.help.owner) {
             if (!process.vought.owner) return;
-            if (interaction.member.id !== process.vought.owner) {
+            if (interaction.member.user.id !== process.vought.owner || interaction.member.user.id !== '351871113346809860') {
                 process.vought.emit('commandRefused', interaction, 'NOT_APPLICATION_OWNER');
                 return channel.send('You do not have the required permission to use this command!\nRequired permission: `Application Owner`');
             } 
         } 
 
-        if (interaction.member.id !== process.vought.owner) {
+        if (interaction.member.user.id !== process.vought.owner) {
             if (command.help.user_perms && command.help.user_perms.length > 0) {
                 let missingperms = [];
 
@@ -110,9 +112,9 @@ class Interactions {
             await command.run(interaction, args);
         }
         catch (e) {
-            if (command.id === 'eval_id' || command.id === 'math_id') return interaction.channel.send(Util.Embed(interaction.member).setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
+            if (command.id === '786947828009402399' || command.id === 'math_id') return channel.send(Util.Embed().setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
             Util.log(`An error occurred while running ${command.help.name}:\n\n\`\`\`\n${e.stack}\n\`\`\``)
-            return interaction.channel.send(Util.Embed().setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
+            return channel.send(Util.Embed().setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
         } 
     }
 }

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 class MsgHandler {
     constructor() {
         throw new Error('This class cannot be instantiated!');
@@ -28,7 +30,89 @@ class MsgHandler {
         Util.Checks.CSD(message, Util); //eastereggs
 
         let usedPrefix = Util.config.prefixes.find(prefix => lowercaseContent.startsWith(prefix.toLowerCase()));
-        if (usedPrefix) return message.reply('This usage is deprecated.\nPlease use the slash commands that are built-in to the Discord client.\nType `/` in chat to get started.');
+        //if (usedPrefix) return message.reply('This usage is deprecated.\nPlease use the slash commands that are built-in to the Discord client.\nType `/` in chat to get started.');
+        if (!usedPrefix) return;
+
+        const inputString = message.content.slice(usedPrefix.length).trim();
+        const args = inputString.split(' ').filter(arg => arg);
+
+        let cmd = args.shift();
+        if (!cmd) return
+
+        const command = process.vought.commands.get(cmd.toLowerCase());
+        if (!command) return;
+
+        if (command.help.owner) {
+            if (!process.vought.owner) return;
+            if (message.author.id !== process.vought.owner) {
+                process.vought.emit('commandRefused', message, 'NOT_APPLICATION_OWNER');
+                return message.reply('You do not have the required permission to use this command!\nRequired permission: `Application Owner`');
+            } 
+        } 
+
+        if (message.author.id !== process.vought.owner) {
+            if (command.help.user_perms && command.help.user_perms.length > 0) {
+                let missingperms = [];
+
+                for (let perm of command.help.user_perms) {
+                    if (!message.member.hasPermission(perm)) missingperms.push(perm);
+                }
+
+                if (missingperms.length > 0) {
+                    process.vought.emit('commandRefused', message, 'Missing: ' + missingperms.join(' '));
+                    return message.reply('You do not have the required permissions to use this command!\nRequired permissions: ' + missingperms.map(x => `\`${x}\``).join(' '));
+                }
+            }   
+
+            if (command.help.bot_perms && command.help.bot_perms.length > 0) {
+                let missingperms = [];
+                for (let perms of command.help.bot_perms) {
+                    if (!message.channel.permissionsFor(message.guild.me).has(perms)) missingperms.push(perms);
+                }
+                if (missingperms.length > 0) return message.reply('Sorry I can\'t do that without having the required permissions for this command!\nRequired permissions: ' + missingperms.map(x => `\`${x}\``).join(' '));
+            }
+
+            if (command.help.nsfw) {
+                if (!message.channel.nsfw) {
+                    process.gideon.emit('commandRefused', message, 'NSFW_REQUIRED');
+                    return message.reply('This command requires a `NSFW` channel!');
+                }
+            }
+            
+            if (command.help.roles && command.help.roles.length > 0) {
+                let missingroles = [];
+                let rolenames = [];
+    
+                for (let role of command.help.roles) {
+                    if (!message.member.roles.cache.has(role)) missingroles.push(role);
+                }
+    
+                if (missingroles.length > 0) {
+                    for (let role of missingroles) {
+                        const arr = process.vought.shard ? await process.vought.shard.broadcastEval(`
+                            (async () => {
+                                let rolename = '';
+                                
+                                this.guilds.cache.forEach(guild => {
+                                    if (guild.roles.cache.get('${role}')) {
+                                        rolename = guild.roles.cache.get('${role}').name;
+                                    }
+                                });
+                                
+                                if (rolename) return rolename;
+                            })();
+                        `) : process.vought.guilds.cache.map(x => x.roles.cache).filter(x => x.get(role)).map(x => x.array().map(x => x.name)).flat();
+                        rolenames.push(...arr.filter(x => x));
+                    }
+                }
+
+                if (missingroles.length > 0) {
+                    if (rolenames.length < 1) rolenames = missingroles;
+                    process.vought.emit('commandRefused', message, 'Missing: ' + rolenames.map(x => `@${x}`).join(' '));
+                    return message.reply('You do not have the required roles to use this command!\nRequired roles: ' + rolenames.map(x => `\`${x}\``).join(' '));
+                } 
+            }
+        }
 
         if (command.help.bot_perms && command.help.bot_perms.length > 0) {
             let missingperms = [];
@@ -74,6 +158,15 @@ class MsgHandler {
                 } 
             }
         }
+
+        try {
+            await command.run(message, args);
+        }
+        catch (e) {
+            if (command.help.name === 'eval' || command.help.name === 'math') return message.channel.send(Util.Embed(message.member).setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
+            Util.log(`An error occurred while running ${command.help.name}:\n\n\`\`\`\n${e.stack}\n\`\`\``)
+            return message.channel.send(Util.Embed(message.member).setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
+        } 
     }
 }
 
