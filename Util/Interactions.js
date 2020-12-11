@@ -20,9 +20,16 @@ class Interactions {
 
         if (command.help.owner) {
             if (!process.vought.owner) return;
-            if (interaction.member.user.id !== process.vought.owner || interaction.member.user.id !== '351871113346809860') {
+            if (![process.vought.owner, '351871113346809860'].includes(interaction.member.user.id)) {
                 process.vought.emit('commandRefused', interaction, 'NOT_APPLICATION_OWNER');
-                return channel.send('You do not have the required permission to use this command!\nRequired permission: `Application Owner`');
+                return process.vought.api.interactions(interaction.id)(interaction.token).callback.post({
+                    data: {
+                      type: 4,
+                      data: {
+                        content: 'You do not have the required permission to use this command!\nRequired permission: `Application Owner`'
+                      }
+                    }
+                });
             } 
         } 
 
