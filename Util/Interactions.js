@@ -82,7 +82,7 @@ class Interactions {
                 if (missingroles.length > 0) {
                     if (rolenames.length < 1) rolenames = missingroles;
                     process.vought.emit('commandRefused', interaction, 'Missing: ' + rolenames.map(x => `@${x}`).join(' '));
-                    return interaction.interaction.reply('You do not have the required roles to use this command!\nRequired roles: ' + rolenames.map(x => `\`${x}\``).join(' '));
+                    return interaction.reply('You do not have the required roles to use this command!\nRequired roles: ' + rolenames.map(x => `\`${x}\``).join(' '));
                 } 
             }
         }

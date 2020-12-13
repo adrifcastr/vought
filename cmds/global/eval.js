@@ -5,23 +5,15 @@ import Discord from 'discord.js';
 import moment from 'moment';
 
 /**
- * @param {Discord.Interaction} interaction
- * @param {object} args
+ * @param {Discord.Intercation} interaction
+ * @param {object[]} args
  */
 export async function run(interaction, args) {
-    const channel = process.vought.channels.cache.get(interaction.channel_id);
     const code = args[0].value;
     const returnedValue = eval(code);
 
     if (typeof returnedValue === 'undefined') {
-        process.vought.api.interactions(interaction.id)(interaction.token).callback.post({
-            data: {
-              type: 4,
-              data: {
-                content: 'The evaluated code returned nothing.'
-              }
-            }
-        });
+        interaction.reply('The evaluated code returned nothing.');
         return;
     }
 
@@ -33,19 +25,11 @@ export async function run(interaction, args) {
 
     if (printValue == '{}') return;
 
-    return process.vought.api.interactions(interaction.id)(interaction.token).callback.post({
-        data: {
-          type: 4,
-          data: {
-            content: '```\n' + Util.truncate(printValue, 1900, true) + '```\n'
-          }
-        }
-    });
+    return interaction.reply(Util.truncate(printValue, 1900, true), {code: true});
 }
 
 export const help = {
     id: '786947828009402399',
-    name: 'eval',
     owner: true,
     nsfw: false,
     roles: [],
