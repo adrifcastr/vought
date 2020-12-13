@@ -10,26 +10,16 @@ class Interactions {
      * @param {Discord.Interaction} interaction 
      */
     static async Handle(interaction, Util) {
-        const args = interaction.data.options;
-        const channel = process.vought.channels.cache.get(interaction.channel_id);
-
-        //presumably the discord.js interaction object will contain a channel, guild and member object
-        const command = process.vought.slashcommands.get(interaction.data.id); //currently use this collection
-        console.log(command);
+        const args = interaction.options;
+    
+        const command = process.vought.commands.get(interaction.commandID);
         if (!command) return;
 
         if (command.help.owner) {
             if (!process.vought.owner) return;
             if (![process.vought.owner, '351871113346809860'].includes(interaction.member.user.id)) {
                 process.vought.emit('commandRefused', interaction, 'NOT_APPLICATION_OWNER');
-                return process.vought.api.interactions(interaction.id)(interaction.token).callback.post({
-                    data: {
-                      type: 4,
-                      data: {
-                        content: 'You do not have the required permission to use this command!\nRequired permission: `Application Owner`'
-                      }
-                    }
-                });
+                return interaction.reply('You do not have the required permission to use this command!\nRequired permission: `Application Owner`');
             } 
         } 
 
@@ -43,7 +33,7 @@ class Interactions {
 
                 if (missingperms.length > 0) {
                     process.vought.emit('commandRefused', interaction, 'Missing: ' + missingperms.join(' '));
-                    return channel.send('You do not have the required permissions to use this command!\nRequired permissions: ' + missingperms.map(x => `\`${x}\``).join(' '));
+                    return interaction.reply('You do not have the required permissions to use this command!\nRequired permissions: ' + missingperms.map(x => `\`${x}\``).join(' '));
                 }
             }   
 
@@ -52,13 +42,13 @@ class Interactions {
                 for (let perms of command.help.bot_perms) {
                     if (!message.channel.permissionsFor(interaction.guild.me).has(perms)) missingperms.push(perms);
                 }
-                if (missingperms.length > 0) return channel.send('Sorry I can\'t do that without having the required permissions for this command!\nRequired permissions: ' + missingperms.map(x => `\`${x}\``).join(' '));
+                if (missingperms.length > 0) return interaction.reply('Sorry I can\'t do that without having the required permissions for this command!\nRequired permissions: ' + missingperms.map(x => `\`${x}\``).join(' '));
             }
 
             if (command.help.nsfw) {
                 if (!interaction.channel.nsfw) {
                     process.gideon.emit('commandRefused', interaction, 'NSFW_REQUIRED');
-                    return channel.send('This command requires a `NSFW` channel!');
+                    return interaction.reply('This command requires a `NSFW` channel!');
                 }
             }
             
@@ -92,7 +82,7 @@ class Interactions {
                 if (missingroles.length > 0) {
                     if (rolenames.length < 1) rolenames = missingroles;
                     process.vought.emit('commandRefused', interaction, 'Missing: ' + rolenames.map(x => `@${x}`).join(' '));
-                    return interaction.channel.send('You do not have the required roles to use this command!\nRequired roles: ' + rolenames.map(x => `\`${x}\``).join(' '));
+                    return interaction.interaction.reply('You do not have the required roles to use this command!\nRequired roles: ' + rolenames.map(x => `\`${x}\``).join(' '));
                 } 
             }
         }
@@ -101,9 +91,9 @@ class Interactions {
             await command.run(interaction, args);
         }
         catch (e) {
-            if (command.id === '786947828009402399' || command.id === 'math_id') return channel.send(Util.Embed().setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
-            Util.log(`An error occurred while running ${command.help.name}:\n\n\`\`\`\n${e.stack}\n\`\`\``)
-            return channel.send(Util.Embed().setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
+            if (command.id === '786947828009402399' || command.id === '786980858707181621') return interaction.reply(Util.Embed().setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
+            Util.log(`An error occurred while running ${interaction.commandName}:\n\n\`\`\`\n${e.stack}\n\`\`\``)
+            return interaction.reply(Util.Embed().setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
         } 
     }
 }

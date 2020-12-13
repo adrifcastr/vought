@@ -19,7 +19,6 @@ process.vought = vought;
 const logos = '\n<a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896>';
 process.logos = logos;
 vought.commands = new Discord.Collection();
-vought.slashcommands = new Discord.Collection();
 
 if (process.env.CLIENT_TOKEN) vought.login(process.env.CLIENT_TOKEN);
 else {
@@ -32,7 +31,7 @@ vought.once('ready', async () => {
 
     if (app && app.owner) vought.owner = app.owner.ownerID ? app.owner.ownerID : app.owner.id;
   
-    setInterval(Util.InitStatus, 20e3);
+    Util.InitStatus()
     Util.SQL.InitDB();
     await Util.LoadCommands();
 
@@ -69,15 +68,9 @@ vought.on('rateLimit', rateLimitInfo => {
     Util.log('Hit a ratelimit: ' + `\`\`\`\nTimeout: ${rateLimitInfo.timeout} ms\nLimit: ${rateLimitInfo.limit}\nMethod: ${rateLimitInfo.method}\nPath: ${rateLimitInfo.path}\nRoute: ${rateLimitInfo.route}\n\`\`\``);
 });
 
-vought.ws.on('INTERACTION_CREATE', interaction => {
-    Util.Interactions.Handle(interaction, Util);
-});
-
-/*
 vought.on('interactionCreate', interaction => {
     Util.Interactions.Handle(interaction, Util);
 });
-*/
 
 vought.on('message', message => {
     Util.MsgHandler.Handle(message, Util);
@@ -127,7 +120,6 @@ vought.on('guildMemberUpdate', async (oldMember, newMember) => {
     }
 });
 
-/*
 vought.on('commandRefused', (interaction, reason) => {
-    Util.log(`Command Refused:\n\n${interaction.member.author?.tag} attempted to use \`${interaction?.name}\`\nCommand failed due to: \`${reason}\`\nOrigin: \`#${interaction?.channel?.name}\` at \`${interaction?.guild?.name}\``);
-}); */
+    Util.log(`Command Refused:\n\n${interaction.member.author?.tag} attempted to use \`${interaction?.commandName}\`\nCommand failed due to: \`${reason}\`\nOrigin: \`#${interaction?.channel?.name}\` at \`${interaction?.guild?.name}\``);
+});

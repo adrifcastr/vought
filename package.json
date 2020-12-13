@@ -15,7 +15,7 @@
     "canvas": "^2.6.1",
     "crypto": "^1.0.1",
     "discord-paginationembed": "^2.0.0",
-    "discord.js": "monbrey/discord.js#inline-replies",
+    "discord.js": "gideonbot/discord.js",
     "dotenv": "^8.2.0",
     "git-last-commit": "^1.0.0",
     "imgur-node": "^0.2.0",

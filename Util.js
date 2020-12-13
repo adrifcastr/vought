@@ -213,9 +213,7 @@ class Util {
     }
 
     static async InitStatus() {
-        process.vought.user.setActivity(`Dawn Of The Seven`, { type: 'STREAMING', url: "https://www.twitch.tv/adrifcastr" }); 
-        await Util.delay(10000);
-        process.vought.user.setActivity(`@Vought Int. help`, { type: 'PLAYING' }); 
+        process.vought.user.setActivity(`Dawn Of The Seven`, { type: 'STREAMING', url: "https://www.twitch.tv/adrifcastr" });
     }
 
     /**
@@ -296,7 +294,7 @@ class Util {
                     let props = await import(`./${file_path}`);
                     
                     process.vought.commands.set(props.help.name, props);
-                    if (props.help.id) process.vought.slashcommands.set(props.help.id, props);
+                    if (props.help.id) process.vought.commands.set(props.help.id, props);
             
                     let cmd_end = process.hrtime.bigint();
                     let took = (cmd_end - cmd_start) / BigInt('1000000');
