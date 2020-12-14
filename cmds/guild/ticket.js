@@ -67,10 +67,10 @@ export async function run(interaction, args) {
     const ticket = await interaction.guild.channels.create(`ticket-${interaction.member.user.discriminator}`, { parent: '777220934359580692', rateLimitPerUser: 5 });
 
     await ticket.updateOverwrite(interaction.guild.roles.everyone, { VIEW_CHANNEL: false });
-    await ticket.updateOverwrite(interaction.member.id, { VIEW_CHANNEL: true, SEND_MESSAGES: true, });
+    await ticket.updateOverwrite(interaction.member.id, { VIEW_CHANNEL: true, SEND_MESSAGES: true });
 
     for (const id of overwrites) {
-        await ticket.updateOverwrite(id, { VIEW_CHANNEL: true, SEND_MESSAGES: true, });
+        await ticket.updateOverwrite(id, { VIEW_CHANNEL: true, SEND_MESSAGES: true });
     }
 
     const tikmsg = await ticket.send(interaction.member.toString() + ' please wait here for a moderator to respond to your ticket.\n\nPlease be aware that moderators with the `ADMINISTRATOR` flag set can lurk into this channel regardless of the gender you specified while creating the ticket.\nIf you feel uncomfortable with this, please ask the operating moderator to close this ticket and resolve your issue via DM.\n\nYour slowmode is set to `5` seconds to prevent spam.');
