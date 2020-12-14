@@ -18,6 +18,7 @@ export async function run(interaction, args) {
 export const help = {
     id: '787737912179032064',
     owner: false,
+    nsfw: false,
     roles: [],
     user_perms: ['MANAGE_CHANNELS'],
     bot_perms: ['MANAGE_CHANNELS']

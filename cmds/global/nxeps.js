@@ -75,6 +75,7 @@ export async function run(interaction) {
 export const help = {
     id: '787011421833396254',
     owner: false,
+    nsfw: false,
     roles: [],
     user_perms: [],
     bot_perms: []
