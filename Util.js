@@ -213,7 +213,8 @@ class Util {
     }
 
     static async InitStatus() {
-        process.vought.user.setActivity(`Dawn Of The Seven`, { type: 'STREAMING', url: "https://www.twitch.tv/adrifcastr" });
+        // eslint-disable-next-line quotes
+        process.vought.user.setActivity(`Dawn Of The Seven`, { type: 'STREAMING', url: 'https://www.twitch.tv/adrifcastr' });
     }
 
     /**
@@ -233,12 +234,13 @@ class Util {
      * @param {String} key
      */
     static async rsreq(method, content = {}, user, key) {
-        let keystr = "";
+        let keystr = '';
         let params = content ?? {};
-        params["_MulticraftAPIMethod"] = method;
-        params["_MulticraftAPIUser"] = user;
+        params['_MulticraftAPIMethod'] = method;
+        params['_MulticraftAPIUser'] = user;
 
         for (let param in params) {
+            // eslint-disable-next-line no-prototype-builtins
             if (!params.hasOwnProperty(param)) continue;
             keystr += param + params[param].toString();
         }
@@ -246,12 +248,12 @@ class Util {
         let hmac = crypto.createHmac('sha256', key);
         hmac.update(keystr);
         let digest = hmac.digest('hex');
-        params["_MulticraftAPIKey"] = digest;
+        params['_MulticraftAPIKey'] = digest;
 
         try {
-            return (await axios.post("https://panel.pebblehost.com/api.php", querystring.stringify(params))).data;
+            return (await axios.post('https://panel.pebblehost.com/api.php', querystring.stringify(params))).data;
         } catch (e) {
-            Util.log("API responded with error status " + e.status);
+            Util.log('API responded with error status ' + e.status);
         }
     }
 

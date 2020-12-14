@@ -66,8 +66,8 @@ export async function run(interaction) {
         };
     }
 
-    const embed = Util.Embed(interaction.member).setTitle('__Upcoming The Boys episodes:__')
-    embed.addField(`${obj.series_name} ${obj.embed.name}`, `${obj.embed.value()}`)
+    const embed = Util.Embed(interaction.member).setTitle('__Upcoming The Boys episodes:__');
+    embed.addField(`${obj.series_name} ${obj.embed.name}`, `${obj.embed.value()}`);
     return interaction.reply(embed);
 }
     

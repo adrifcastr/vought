@@ -31,7 +31,7 @@ vought.once('ready', async () => {
 
     if (app && app.owner) vought.owner = app.owner.ownerID ? app.owner.ownerID : app.owner.id;
   
-    Util.InitStatus()
+    Util.InitStatus();
     Util.SQL.InitDB();
     await Util.LoadCommands();
 

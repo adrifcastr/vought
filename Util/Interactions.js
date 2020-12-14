@@ -1,5 +1,3 @@
-import Discord from 'discord.js';
-
 class Interactions {
     constructor() {
         throw new Error('This class cannot be instantiated!');
@@ -40,7 +38,7 @@ class Interactions {
             if (command.help.bot_perms && command.help.bot_perms.length > 0) {
                 let missingperms = [];
                 for (let perms of command.help.bot_perms) {
-                    if (!message.channel.permissionsFor(interaction.guild.me).has(perms)) missingperms.push(perms);
+                    if (!interaction.member.channel.permissionsFor(interaction.guild.me).has(perms)) missingperms.push(perms);
                 }
                 if (missingperms.length > 0) return interaction.reply('Sorry I can\'t do that without having the required permissions for this command!\nRequired permissions: ' + missingperms.map(x => `\`${x}\``).join(' '));
             }
@@ -92,7 +90,7 @@ class Interactions {
         }
         catch (e) {
             if (command.id === '786947828009402399' || command.id === '786980858707181621') return interaction.reply(Util.Embed().setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
-            Util.log(`An error occurred while running ${interaction.commandName}:\n\n\`\`\`\n${e.stack}\n\`\`\``)
+            Util.log(`An error occurred while running ${interaction.commandName}:\n\n\`\`\`\n${e.stack}\n\`\`\``);
             return interaction.reply(Util.Embed().setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
         } 
     }

@@ -1,5 +1,3 @@
-import Discord from 'discord.js';
-
 class Checks {
     constructor() {
         throw new Error('This class cannot be instantiated!');
@@ -25,8 +23,8 @@ class Checks {
             }
         }
         else if (message.content.match(/(?:antony)/i) && message.content.match(/(?:star)/i) && !message.content.match(/(?:starr)/i)) {
-                await message.reply('**HIS LAST NAME IS __STARR__ WITH TWO R\'s**');
-                Util.log(`\`${message.author.tag}\` misspelled Antony. [Jump](<${message.url}>)`);
+            await message.reply('**HIS LAST NAME IS __STARR__ WITH TWO R\'s**');
+            Util.log(`\`${message.author.tag}\` misspelled Antony. [Jump](<${message.url}>)`);
         }
 
         else if (message.content.match(/(?:wish)/i) && message.content.match(/(?:by)/i) && message.content.match(/(?:starlight)/i)) message.channel.send('Presenting Wish™ by Starlight:\n', { files: ['./data/video/Wish by Starlight.mp4'] });

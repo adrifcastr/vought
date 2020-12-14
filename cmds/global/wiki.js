@@ -32,8 +32,8 @@ export async function run(interaction, args) {
     const url = article.url.replace(/\(/g, '%28').replace(/\)/g, '%29');
     
     return interaction.reply(Util.Embed(interaction.member).setTitle(article.title)
-    .setDescription(`${article.abstract + '...'}\n\n**[Click here to read the full article](https://${wiki.url}${url} 'https://${wiki.url}${url}')**` + process.logos)
-    .setThumbnail(article.thumbnail)); 
+        .setDescription(`${article.abstract + '...'}\n\n**[Click here to read the full article](https://${wiki.url}${url} 'https://${wiki.url}${url}')**` + process.logos)
+        .setThumbnail(article.thumbnail)); 
 }
 
 export const help = {

@@ -1,3 +1,5 @@
+/* eslint-disable no-unreachable */
+/* eslint-disable no-undef */
 import Util from '../../Util.js';
 
 /**

@@ -5,9 +5,9 @@ import Util from '../../Util.js';
  */
 export async function run(interaction) {
     const embed = Util.Embed(interaction.member)
-    .setTitle('Development Credits:')
-    .addField('adrifcastr', 'Development & Hosting')
-    .addField('Donate:', '[PayPal](https://paypal.me/adrifcastr)')
+        .setTitle('Development Credits:')
+        .addField('adrifcastr', 'Development & Hosting')
+        .addField('Donate:', '[PayPal](https://paypal.me/adrifcastr)');
 
     return interaction.reply(embed);
 }

@@ -17,11 +17,10 @@
     "rules": {
         "indent": [
             "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "windows"
+            4,
+            {
+                "SwitchCase": 1
+            }
         ],
         "quotes": [
             "error",

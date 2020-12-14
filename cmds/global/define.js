@@ -13,11 +13,11 @@ export async function run(interaction, args) {
     const ex = result.list[0].example.replace(/(?:\[)/g, '').replace(/(?:\])/g, '');
 
     const embed = Util.Embed(interaction.member)
-    .setTitle(result.list[0].word)
-    .setURL(result.list[0].permalink)
-    .setThumbnail('https://miro.medium.com/max/4000/1*ctUugc4pAxlLweBOxzySLg.png')
-    .addField('Definition:', Util.truncate(def, 1000, true))
-    .addField('Example:', '_' + Util.truncate(ex, 1000, true) + '_')
+        .setTitle(result.list[0].word)
+        .setURL(result.list[0].permalink)
+        .setThumbnail('https://miro.medium.com/max/4000/1*ctUugc4pAxlLweBOxzySLg.png')
+        .addField('Definition:', Util.truncate(def, 1000, true))
+        .addField('Example:', '_' + Util.truncate(ex, 1000, true) + '_');
 
     return interaction.reply(embed);
 }

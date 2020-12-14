@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 class MsgHandler {
     constructor() {
         throw new Error('This class cannot be instantiated!');
@@ -37,7 +35,7 @@ class MsgHandler {
         const args = inputString.split(' ').filter(arg => arg);
 
         let cmd = args.shift();
-        if (!cmd) return
+        if (!cmd) return;
 
         const command = process.vought.commands.get(cmd.toLowerCase());
         if (!command) return;
@@ -164,7 +162,7 @@ class MsgHandler {
         }
         catch (e) {
             if (command.help.name === 'eval' || command.help.name === 'math') return message.channel.send(Util.Embed(message.member).setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
-            Util.log(`An error occurred while running ${command.help.name}:\n\n\`\`\`\n${e.stack}\n\`\`\``)
+            Util.log(`An error occurred while running ${command.help.name}:\n\n\`\`\`\n${e.stack}\n\`\`\``);
             return message.channel.send(Util.Embed(message.member).setTitle('An error occurred while processing your request:').setDescription('```\n' + e + '```'));
         } 
     }

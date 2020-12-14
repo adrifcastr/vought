@@ -4,14 +4,14 @@ import Util from '../../Util.js';
  * @param {Discord.Intercation} interaction
  */
 export async function run(interaction) {
-   const body = await Util.fetchJSON('https://gideonbot.com/api/quotes/theboys').catch(ex => Util.log(ex));
-   const quote = body[Math.floor(Math.random() * body.length)];
+    const body = await Util.fetchJSON('https://gideonbot.com/api/quotes/theboys').catch(ex => Util.log(ex));
+    const quote = body[Math.floor(Math.random() * body.length)];
 
-   const embed = Util.Embed(interaction.member)
-   .setDescription('**' + quote.quote + '\n\n~' + quote.author + '**' + process.logos)
-   .setThumbnail(quote.img)
+    const embed = Util.Embed(interaction.member)
+        .setDescription('**' + quote.quote + '\n\n~' + quote.author + '**' + process.logos)
+        .setThumbnail(quote.img);
 
-   return interaction.reply(embed);
+    return interaction.reply(embed);
 }
 
 export const help = {

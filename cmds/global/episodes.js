@@ -40,9 +40,9 @@ export async function run(interaction, args) {
     timeString = h + ':' + timeString.split(':')[1] + am_pm;
     
     const embed = Util.Embed(interaction.member)
-    .setTitle(`${show.title} ${body.season}x${Util.normalize(body.number)} - ${body.name}`)
-    .setDescription(sp + desc + sp + `\n\nAirdate: \`${moment(airdate).isValid() ? airdate.toDateString() : 'No Airdate Available'}\`\nAirtime: \`${body.airtime === '' ? 'No Airtime Available' : timeString + ' ET'}\`\nRuntime: \`${body.runtime} Minutes\`\nChannel: \`${show.channel}\`\n\n**[Full recap & trailer](${body.url} '${body.url}')**` + process.logos)
-    .setImage(img);
+        .setTitle(`${show.title} ${body.season}x${Util.normalize(body.number)} - ${body.name}`)
+        .setDescription(sp + desc + sp + `\n\nAirdate: \`${moment(airdate).isValid() ? airdate.toDateString() : 'No Airdate Available'}\`\nAirtime: \`${body.airtime === '' ? 'No Airtime Available' : timeString + ' ET'}\`\nRuntime: \`${body.runtime} Minutes\`\nChannel: \`${show.channel}\`\n\n**[Full recap & trailer](${body.url} '${body.url}')**` + process.logos)
+        .setImage(img);
 
     return interaction.reply(embed);
 

@@ -19,8 +19,8 @@ export async function run(interaction, args) {
     };
 
     return interaction.reply(Util.Embed(interaction.member)
-    .setDescription(`**${boom.emote}${auth} ${boom.text}${boom.emote}**\n\n${boom.desc}` + process.logos)
-    .setImage(boom.gif));
+        .setDescription(`**${boom.emote}${auth} ${boom.text}${boom.emote}**\n\n${boom.desc}` + process.logos)
+        .setImage(boom.gif));
 }
 
 export const help = {
