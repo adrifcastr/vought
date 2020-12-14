@@ -16,8 +16,7 @@ export async function run(interaction) {
 }
 
 export const help = {
-    //id: '786981694694621184',
-    id: '787650463909543946',
+    id: '786981694694621184',
     owner: false,
     nsfw: false,
     roles: [],

@@ -82,7 +82,7 @@ export async function run(interaction, args) {
     const ticket = await interaction.guild.channels.create(`ticket-${interaction.member.user.discriminator}`, { parent: '777220934359580692', permissionOverwrites: perms, rateLimitPerUser: 5 });
     const tikmsg = await ticket.send(interaction.member.toString() + ' please wait here for a moderator to respond to your ticket.\n\nPlease be aware that moderators with the `ADMINISTRATOR` flag set can lurk into this channel regardless of the gender you specified while creating the ticket.\nIf you feel uncomfortable with this, please ask the operating moderator to close this ticket and resolve your issue via DM.\n\nYour slowmode is set to `5` seconds to prevent spam.');
 
-    await interaction.reply(Util.Embed().setTitle('Support Ticket for ' + interaction.member.user.tag).setDescription(`Your support ticket \`${title}\` has been created successfully.\nPlease [wait here](${tikmsg.url}) for a moderator to assist you.\n\n_Note: abusing support tickets will result in removal from this guild._`)); 
+    await interaction.reply(`Your support ticket \`${title}\` has been created successfully.\nPlease [wait here](<${tikmsg.url}>) for a moderator to assist you.\n\n_Note: abusing support tickets will result in removal from this guild._`, { ephemeral: true }); 
     let channel;
     if (switches.severity === 'moderator') channel = interaction.guild.channels.cache.get('772873456068722739');
     else channel = interaction.guild.channels.cache.get('608796284488515588');
