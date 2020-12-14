@@ -67,7 +67,9 @@ class Checks {
      * @returns {boolean}
      */
     static IBU(message) {
-        const ubl = process.vought.getUser.get(message.author.id);
+        let ubl;
+        if (message.commandID) ubl = process.vought.getUser.get(message.member.id); //interaction
+        else ubl = process.vought.getUser.get(message.author.id);
         if (!ubl || !ubl.blacklist) return;
         return ubl.blacklist === 1;
     }
