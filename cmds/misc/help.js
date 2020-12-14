@@ -50,10 +50,6 @@ export async function run(message, args) {
 
     for (let filename of process.vought.commands.keys()) {
         let cmd = process.vought.commands.get(filename);
-        if (!cmd.help || !cmd.help.help_text || !cmd.help.help_desc) {
-            Util.log(filename + ' is missing help properties, please fix');
-        }
-
         if (cmd.help.type == type) commands[cmd.help.help_text] = cmd.help;
     }
 
