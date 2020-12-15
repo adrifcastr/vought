@@ -74,7 +74,6 @@ vought.on('interactionCreate', interaction => {
 
 vought.on('message', message => {
     Util.MsgHandler.Handle(message, Util);
-    Util.Restart(message);
 });
 
 vought.on('messageUpdate', async (oldMessage, newMessage) => {
