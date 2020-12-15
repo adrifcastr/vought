@@ -47,21 +47,6 @@ class Checks {
     }
 
     /**
-     * Rules check
-     * @param {Discord.Message} message 
-     */
-    static async RulesCheck(message, Util) {
-        let member = await process.vought.guilds.cache.get('604160368490577930').members.fetch(message.author.id).catch(ex => Util.log(ex));
-
-        if (!member) return;
-        if (member.roles.cache.has('766304492165005323')) return;
-
-        const role = process.vought.guilds.cache.get('604160368490577930').roles.cache.get('766304492165005323');
-        await member.roles.add(role).catch(ex => Util.log(ex));
-        message.reply('You have been verified and gained access to the guild!').catch(ex => Util.log(ex));
-    }
-
-    /**
      * Ignore commands from blacklisted users
      * @param {Discord.Message} message 
      * @returns {boolean}
