@@ -8,11 +8,7 @@ class MsgHandler {
      * @param {*} Util 
      */
     static async Handle(message, Util) {
-        if (!message || !message.author || message.partial || message.type != 'DEFAULT') return;
-        if (!message.guild) {
-            //else if (message.content.match(/^\bliberty\b$/i)) Util.Checks.RulesCheck(message, Util);
-            return;
-        }
+        if (!message || !message.guild || !message.author || message.partial || message.type != 'DEFAULT') return;
         
         if (message.author.bot) return;
         if (!message.guild.me) await message.guild.members.fetch(process.vought.user.id);
