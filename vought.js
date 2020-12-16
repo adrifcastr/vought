@@ -15,6 +15,7 @@ const vought = new Discord.Client({
 });
 
 process.vought = vought;
+process.dbcmd = '787650463909543946'; //botcave debug slashcommand id
 
 const logos = '\n<a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896>';
 process.logos = logos;
