@@ -33,11 +33,9 @@ class Util {
     /**
      * Get image from imgur album
      * @param {string} imgid 
-     * @param {Discord.Message} message
-     * @param {boolean} nsfw
+     * @param {Discord.Interaction} interaction
      */
-    static async IMG(imgid, message) {
-        if (!message.guild) return;
+    static async IMG(imgid, interaction) {
         if (!process.env.IMG_CL) return;
 
         const imgclient = new Imgur.Client(process.env.IMG_CL);
@@ -45,7 +43,7 @@ class Util {
         imgclient.album.get(imgid, (err, res) => {
             if (err) {
                 Util.log(err);
-                return message.channel.send(Util.Embed(message.member).setTitle('An error occurred, please try again later!'));
+                return interaction.reply(Util.Embed(interaction.member).setTitle('An error occurred, please try again later!'));
             }
     
             let min = 0;
@@ -53,7 +51,7 @@ class Util {
             let ranum = Math.floor(Math.random() * (max - min + 1)) + min;
             let rimg = res.images[ranum].link;
 
-            message.channel.send(Util.Embed(message.member).setImage(rimg));
+            interaction.reply(Util.Embed(interaction.member).setImage(rimg));
         });
     }
 

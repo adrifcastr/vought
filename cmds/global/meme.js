@@ -1,13 +1,10 @@
-/* eslint-disable no-unreachable */
-/* eslint-disable no-undef */
 import Util from '../../Util.js';
 
 /**
  * @param {Discord.Intercation} interaction
  */
 export async function run(interaction) {
-    return interaction.reply('Not yet available as slash command');
-    return Util.IMG('uellKvP', message);
+    return Util.IMG('uellKvP', interaction);
 }
 
 export const help = {
