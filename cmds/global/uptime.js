@@ -7,7 +7,7 @@ export async function run(interaction) {
     return interaction.reply(Util.Embed(interaction.member).setTitle('Uptime:').setDescription(Util.secondsToDifferenceString(process.vought.uptime / 1000, { enableSeconds: true } ) + process.logos));
 }
 
-export const help = {
+export let help = {
     id: '786981899092099132',
     owner: false,
     nsfw: false,

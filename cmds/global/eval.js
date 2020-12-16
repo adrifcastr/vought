@@ -28,7 +28,7 @@ export async function run(interaction, args) {
     return interaction.reply(Util.truncate(printValue, 1900, true), {code: true});
 }
 
-export const help = {
+export let help = {
     id: '786947828009402399',
     owner: true,
     nsfw: false,

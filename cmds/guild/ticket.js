@@ -82,7 +82,7 @@ export async function run(interaction, args) {
     channel.send(overwrites.map(x => `<@${x}>`).join(' '), { embed: Util.Embed().setTitle('New Support Ticket:').setDescription(`Ticket: \`${title}\`\nOpened by: \`${interaction.member.user.tag}\`\nSeverity: \`${switches.severity === 'general' ? 'Type 1 (General issue)' : switches.severity === 'member' ? 'Type 2 (Issue with one or more members)' : 'Type 3 (Issue with one or more moderators)'}\`\nGender preference: ${switches.gender === 'female' ? '♀️' : switches.gender === 'male' ? '♂️' : '🚻'}\n\nOne of the mentioned moderators please [respond to this ticket](${tikmsg.url}).`) });
 }
 
-export const help = {
+export let help = {
     id: '787739956180418580',
     owner: false,
     roles: [],

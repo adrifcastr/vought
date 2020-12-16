@@ -23,7 +23,7 @@ export async function run(interaction, args) {
         .setImage(boom.gif));
 }
 
-export const help = {
+export let help = {
     id: '787009590533292033',
     owner: false,
     nsfw: false,

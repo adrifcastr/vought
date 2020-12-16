@@ -36,7 +36,7 @@ export async function run(interaction, args) {
         .setThumbnail(article.thumbnail)); 
 }
 
-export const help = {
+export let help = {
     id: '787007929294258197',
     owner: false,
     nsfw: false,

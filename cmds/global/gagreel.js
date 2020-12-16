@@ -11,7 +11,7 @@ export async function run(interaction) {
     return interaction.reply(embed);
 }
 
-export const help = {
+export let help = {
     id: '787013123470131311',
     owner: false,
     nsfw: false,

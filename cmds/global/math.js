@@ -9,7 +9,7 @@ export async function run(interaction, args) {
     return interaction.reply(result, { code: true });
 }
 
-export const help = {
+export let help = {
     id: '786980858707181621',
     owner: false,
     nsfw: false,

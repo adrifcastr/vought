@@ -26,7 +26,7 @@ export async function run(interaction, args) {
     return interaction.reply(Util.Embed(interaction.member).attachFiles(attachment).setImage('attachment://tbmeme.jpg'));
 }
 
-export const help = {
+export let help = {
     id: '787010398137352222',
     owner: false,
     nsfw: false,

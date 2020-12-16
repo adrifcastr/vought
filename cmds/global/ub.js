@@ -30,7 +30,7 @@ export async function run(interaction, args) {
     }
 }
 
-export const help = {
+export let help = {
     id: '787010897633083462',
     owner: true,
     nsfw: false,

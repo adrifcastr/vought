@@ -72,7 +72,7 @@ export async function run(interaction) {
 }
     
 
-export const help = {
+export let help = {
     id: '787011421833396254',
     owner: false,
     nsfw: false,

@@ -13,7 +13,7 @@ export async function run(interaction, args) {
     } 
 }
 
-export const help = {
+export let help = {
     id: '787739768196562944',
     owner: false,
     roles: [],

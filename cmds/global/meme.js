@@ -7,7 +7,7 @@ export async function run(interaction) {
     return Util.IMG('uellKvP', interaction);
 }
 
-export const help = {
+export let help = {
     id: '787008539621195808',
     owner: false,
     nsfw: false,

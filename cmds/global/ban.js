@@ -31,7 +31,7 @@ export async function run(interaction, args) {
     else return interaction.reply('Couldn\'t ban this user. Please make sure that my role is higher then theirs and that they\'re not the guild owner.\nOtherwise Discord was unable to globally resolve the user.');
 }
 
-export const help = {
+export let help = {
     id: '787016382504108106',
     owner: false,
     nsfw: false,

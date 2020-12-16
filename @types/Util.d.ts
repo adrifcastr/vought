@@ -59,6 +59,7 @@ interface SeasonAndEpisodeInfo {
 interface Command {
     help: {
         id: string
+        debug: boolean;
         owner: boolean;
         nsfw: boolean;
         roles: string[];

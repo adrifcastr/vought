@@ -15,7 +15,7 @@ export async function run(interaction, args) {
     }
 }
 
-export const help = {
+export let help = {
     id: '787737912179032064',
     owner: false,
     nsfw: false,

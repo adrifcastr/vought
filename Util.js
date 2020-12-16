@@ -247,8 +247,11 @@ class Util {
     
                     let props = await import(`./${file_path}`);
                     
-                    process.vought.commands.set(props.help.name, props);
-                    if (props.help.id) process.vought.commands.set(props.help.id, props);
+                    if (props.help.debug) {
+                        props.help.id = '787650463909543946';
+                    }
+
+                    process.vought.commands.set(props.help.id, props);
             
                     let cmd_end = process.hrtime.bigint();
                     let took = (cmd_end - cmd_start) / BigInt('1000000');
