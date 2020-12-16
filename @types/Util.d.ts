@@ -15,7 +15,7 @@ export function normalize(num: number): string;
 export function getIdFromString(str: string): string;
 export function secondsToDifferenceString(seconds: number, settings: secondsToDifferenceSettings): string;
 export function parseSeriesEpisodeString(str: string): SeasonAndEpisodeInfo;
-export function IMG(image_id: string, message: Discord.Message): Promise<void>;
+export function IMG(image_id: string, interaction: Discord.Interaction): Promise<void>;
 export function ValID(input: string): string;
 
 declare module "discord.js" {
@@ -38,7 +38,7 @@ declare global {
 }
 
 interface Handler {
-    Handle(message: Discord.Message, Util: Util, connection: Discord.VoiceConnection): Promise<void>;
+    Handle(message: Discord.Message, Util: Util): Promise<void>;
 }
 
 interface Config {
@@ -59,13 +59,8 @@ interface SeasonAndEpisodeInfo {
 interface Command {
     help: {
         id: string
-        name: string | string[];
-        type: string;
-        help_text: string;
-        help_desc: string;
         owner: boolean;
         nsfw: boolean;
-        args: {force: boolean, amount?: Number, type?: string};
         roles: string[];
         user_perms: string[];
         bot_perms: string[];
