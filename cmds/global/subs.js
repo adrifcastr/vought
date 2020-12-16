@@ -33,7 +33,7 @@ export async function run(interaction, args) {
     }).then(subtitles => {
         const embed = Util.Embed(`Subtitles for: ${show.title} ${args[1].value}x${Util.normalize(args[2].value)}`, {description: 'Here are the 5 best results from opensubtitles.org:'}, interaction.member);
 
-        for (let sub of Object.values(subtitles)[0]) {
+        for (let sub of Object.values(subtitles)) {
             embed.addField(sub.filename, `**[Download SRT](${sub.url} '${sub.url}')** Lang: \`${sub.lang}\` Score: \`${sub.score}\``);
         }
         
