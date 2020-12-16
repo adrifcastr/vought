@@ -19,7 +19,7 @@ export async function run(interaction, args) {
     });
 
     const show = {
-        id: '15299',
+        id: 'tt1190634',
         title: 'The Boys',
     };
     
@@ -33,7 +33,7 @@ export async function run(interaction, args) {
     }).then(subtitles => {
         const embed = Util.Embed(`Subtitles for: ${show.title} ${args[1].value}x${Util.normalize(args[2].value)}`, {description: 'Here are the 5 best results from opensubtitles.org:'}, interaction.member);
 
-        for (let sub of Object.values(subtitles)) {
+        for (let sub of Object.values(subtitles)[0]) {
             embed.addField(sub.filename, `**[Download SRT](${sub.url} '${sub.url}')** Lang: \`${sub.lang}\` Score: \`${sub.score}\``);
         }
         
