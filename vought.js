@@ -15,7 +15,6 @@ const vought = new Discord.Client({
 });
 
 process.vought = vought;
-process.dbcmd = '787650463909543946'; //botcave debug slashcommand id
 
 const logos = '\n<a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896> <a:voughtspin:766732617500196896>';
 process.logos = logos;
@@ -35,8 +34,6 @@ vought.once('ready', async () => {
     Util.InitStatus();
     Util.SQL.InitDB();
     await Util.LoadCommands();
-
-    Util.config.prefixes.push(`<@!${vought.user.id}>`, `<@${vought.user.id}>`);
     
     console.log('Ready!');
 });
