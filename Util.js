@@ -43,7 +43,7 @@ class Util {
         imgclient.album.get(imgid, (err, res) => {
             if (err) {
                 Util.log(err);
-                return interaction.reply(Util.Embed(interaction.member).setTitle('An error occurred, please try again later!'));
+                return interaction.reply('An error occurred, please try again later!', { ephemeral: true, hideSource: true });
             }
     
             let min = 0;
