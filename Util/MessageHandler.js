@@ -23,7 +23,7 @@ class MsgHandler {
 
         Util.Checks.CSD(message, Util); //eastereggs
 
-        if (lowercaseContent.startsWith('.')) return message.reply('This usage is deprecated.\nPlease use the slash commands that are built-in to the Discord client.\nType `/` in chat to get started.\nPlease update your Discord client if you do not see the slash comands UI.\nhttps://i.imgur.com/4Xte9N0.gif');
+        if (lowercaseContent.startsWith('.')) return message.reply('This usage is deprecated.\nPlease use the slash commands that are built-in to the Discord client.\nType `/` in chat to get started.\nPlease update your Discord client if you do not see the slash commands UI.\nhttps://i.imgur.com/4Xte9N0.gif');
     }
 }
 
