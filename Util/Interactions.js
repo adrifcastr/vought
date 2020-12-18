@@ -91,7 +91,7 @@ class Interactions {
             await command.run(interaction, args);
         }
         catch (e) {
-            if (command.id === '786947828009402399' || command.id === '786980858707181621') return interaction.reply('An error occurred while processing your request:```\n' + e + '```', { ephemeral: true, hideSource: true });
+            if (command.help.id === '786947828009402399' || command.help.id === '786980858707181621') return interaction.reply('An error occurred while processing your request:```\n' + e + '```', { ephemeral: true, hideSource: true });
             Util.log(`An error occurred while running ${interaction.commandName}:\n\n\`\`\`\n${e.stack}\n\`\`\``);
             return interaction.reply('An error occurred while processing your request:```\n' + e + '```', { ephemeral: true, hideSource: true });
         } 
