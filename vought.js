@@ -42,7 +42,6 @@ process.on('uncaughtException', err => {
     Util.log('Uncaught Exception: ' + `\`\`\`\n${err.stack}\n\`\`\``);
 });
 
-
 process.on('unhandledRejection', err => {
     const ignore = [
         Discord.Constants.APIErrors.MISSING_PERMISSIONS,
@@ -74,11 +73,6 @@ vought.on('message', message => {
     Util.MsgHandler.Handle(message, Util);
 });
 
-vought.on('messageUpdate', async (oldMessage, newMessage) => {
-    if (newMessage.partial) await newMessage.fetch();
-    if (newMessage.editedAt) Util.MsgHandler.Handle(newMessage, Util);
-});
-
 vought.on('shardReady', async (id, unavailableGuilds) => {
     if (!unavailableGuilds) Util.log(`Shard \`${id}\` is connected!`);
     else Util.log(`Shard \`${id}\` is connected!\n\nThe following guilds are unavailable due to a server outage:\n${Array.from(unavailableGuilds).join('\n')}`);
@@ -97,8 +91,7 @@ vought.on('guildUnavailable', guild => {
 });
 
 vought.on('guildMemberAdd', async member => {
-    if (member.guild.id !== '604160368490577930') return;
-    
+    if (member.guild.id !== '604160368490577930') return;  
     const channel = process.vought.guilds.cache.get('604160368490577930').channels.cache.get('766304333712457748');
     channel.send(`${member} welcome and thank you for choosing Vought International<:vought:766413861816893440>!\nTo gain full access to this guild, please carefully read through <#765807931408777236> and follow the given instructions!\n\`This account was created ${moment(member.user.createdAt).fromNow()}. (${member.user.createdAt.toLocaleString()})\`` + process.logos);
 });
@@ -108,7 +101,7 @@ vought.on('guildMemberUpdate', async (oldMember, newMember) => {
     const role = process.vought.guilds.cache.get('604160368490577930').roles.cache.get('766304492165005323');
 
     if (oldMember.pending && !newMember.pending && !newMember.roles.cache.has('766304492165005323')) await newMember.roles.add(role);
-    
+
     if (newMember.roles.cache.has('604161294194442252')) {
         if (newMember.roles.cache.has('766304492165005323')) await newMember.roles.remove('766304492165005323').catch(ex => Util.log(ex));
     }
