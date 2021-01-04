@@ -99,16 +99,16 @@ vought.on('guildUnavailable', guild => {
 vought.on('guildMemberAdd', async member => {
     if (member.guild.id !== '604160368490577930') return;
     
-    if (member.roles.cache.has('766304492165005323')) return;
-    const role = process.vought.guilds.cache.get('604160368490577930').roles.cache.get('766304492165005323');
-    await member.roles.add(role).catch(ex => Util.log(ex));
-    
     const channel = process.vought.guilds.cache.get('604160368490577930').channels.cache.get('766304333712457748');
-    channel.send(`${member} welcome and thank you for choosing Vought International<:vought:766413861816893440>!\nTo gain full access to this guild, please carefully read through <#604451022907244574> and follow the given instructions!\n\`This account was created ${moment(member.user.createdAt).fromNow()}. (${member.user.createdAt.toLocaleString()})\`` + process.logos);
+    channel.send(`${member} welcome and thank you for choosing Vought International<:vought:766413861816893440>!\nTo gain full access to this guild, please carefully read through <#765807931408777236> and follow the given instructions!\n\`This account was created ${moment(member.user.createdAt).fromNow()}. (${member.user.createdAt.toLocaleString()})\`` + process.logos);
 });
 
 vought.on('guildMemberUpdate', async (oldMember, newMember) => {
     if (newMember.guild.id !== '604160368490577930') return;
+    const role = process.vought.guilds.cache.get('604160368490577930').roles.cache.get('766304492165005323');
+
+    if (oldMember.pending && !newMember.pending && !newMember.roles.cache.has('766304492165005323')) await newMember.roles.add(role);
+    
     if (newMember.roles.cache.has('604161294194442252')) {
         if (newMember.roles.cache.has('766304492165005323')) await newMember.roles.remove('766304492165005323').catch(ex => Util.log(ex));
     }
