@@ -6,10 +6,8 @@ import Util from './Util.js';
 import moment from 'moment';
 
 const vought = new Discord.Client({
-    ws: {
-        intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_MEMBERS', 'GUILD_PRESENCES', 'GUILD_MESSAGE_REACTIONS', 'DIRECT_MESSAGES']
-    },
-    allowedMentions: { parse: ['users', 'roles'], replied_user: true },
+    intents: 1543,
+    allowedMentions: { parse: ['users', 'roles'], repliedUser: true },
     partials: ['MESSAGE'],
     restRequestTimeout: 25000
 });
